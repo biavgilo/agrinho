@@ -7,31 +7,33 @@
 
   <style>
 
-    /* FONTE PERSONALIZADA */
+    /* ===== FONTE PERSONALIZADA ===== */
     @font-face {
-      font-family: 'Neo';
-      src: url('fontes/Neo.ttf') format('truetype');
+      font-family: 'Bebas';
+      src: url('fontes/bebas.ttf') format('truetype');
     }
 
+    /* ===== CONFIGURAÇÕES GERAIS ===== */
     *{
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: Arial, Helvetica, sans-serif;
     }
 
     body{
       background: #0f1f14;
       overflow-x: hidden;
       color: white;
+      font-family: Arial, Helvetica, sans-serif;
     }
 
-    /* PRIMEIRA TELA */
+    /* ===== PRIMEIRA TELA ===== */
     .hero{
       position: relative;
       height: 200vh;
     }
 
+    /* FUNDO */
     .hero-bg{
       position: fixed;
       top: 0;
@@ -41,7 +43,7 @@
       height: 100vh;
 
       background-image:
-        linear-gradient(rgba(18, 40, 24, 0.75), rgba(18, 40, 24, 0.75)),
+        linear-gradient(rgba(15, 31, 20, 0.72), rgba(15, 31, 20, 0.72)),
         url("img.jpg");
 
       background-size: cover;
@@ -53,10 +55,12 @@
       transition: opacity 0.2s ease;
     }
 
+    /* CONTEÚDO CENTRAL */
     .hero-content{
       position: sticky;
       top: 0;
 
+      width: 100%;
       height: 100vh;
 
       display: flex;
@@ -67,33 +71,38 @@
       padding: 20px;
     }
 
+    /* FRASE PRINCIPAL */
     .hero-title{
-      font-size: clamp(2rem, 5vw, 5rem);
-      font-weight: bold;
-      max-width: 900px;
+      font-family: 'Bebas';
 
-      line-height: 1.2;
+      font-size: clamp(3rem, 9vw, 8rem);
+
+      text-transform: uppercase;
+
+      letter-spacing: 6px;
+
+      line-height: 1.1;
+
+      max-width: 1100px;
 
       color: white;
 
-      /* FONTE APLICADA SÓ NA FRASE PRINCIPAL */
-      font-family: 'Neo';
-
       text-shadow:
-        0 0 15px rgba(0,0,0,0.7),
-        0 0 30px rgba(0,0,0,0.5);
+        0 0 20px rgba(0,0,0,0.7),
+        0 0 40px rgba(0,0,0,0.5);
 
       transition:
         transform 0.2s ease,
         opacity 0.2s ease;
     }
 
-    /* SEGUNDA PARTE */
+    /* ===== SEGUNDA PARTE ===== */
     .content{
       min-height: 100vh;
+
       background: #0f1f14;
 
-      padding: 100px 10%;
+      padding: 120px 10%;
     }
 
     .content h2{
@@ -106,25 +115,33 @@
       font-size: 1.2rem;
       line-height: 1.8;
       color: #d9e6da;
+
+      max-width: 900px;
     }
 
   </style>
 </head>
 <body>
 
+  <!-- PRIMEIRA TELA -->
   <section class="hero">
 
     <div class="hero-bg" id="bg"></div>
 
     <div class="hero-content">
+
       <h1 class="hero-title" id="title">
-        Produzir hoje sem destruir o amanhã
+        Produzir Hoje <br>
+        Sem Destruir O Amanhã
       </h1>
+
     </div>
 
   </section>
 
+  <!-- SEGUNDA PARTE -->
   <section class="content">
+
     <h2>Agro Forte, Futuro Sustentável</h2>
 
     <p>
@@ -132,9 +149,11 @@
       utilizando tecnologia, inovação e responsabilidade ecológica para garantir
       alimento, desenvolvimento e proteção da natureza para as próximas gerações.
     </p>
+
   </section>
 
   <script>
+
     const bg = document.getElementById("bg");
     const title = document.getElementById("title");
 
@@ -142,16 +161,17 @@
 
       let scroll = window.scrollY;
 
-      // Fundo desaparecendo
+      /* FUNDO DESAPARECENDO */
       bg.style.opacity = 1 - scroll / 700;
 
-      // Texto subindo
+      /* TEXTO SUBINDO */
       title.style.transform = `translateY(-${scroll * 0.4}px)`;
 
-      // Texto sumindo
+      /* TEXTO SUMINDO */
       title.style.opacity = 1 - scroll / 500;
 
     });
+
   </script>
 
 </body>
