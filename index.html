@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plano ABC & Sistema Indoor</title>
+    <title>Plano ABC & Sustentabilidade</title>
     <style>
         /* Configurações Gerais e Rolagem Suave */
         * {
@@ -19,8 +19,25 @@
 
         body {
             background-color: #D9BBFA; /* fundo ROXO clarinho */
-            color: #1a1a1a; /* Cor do texto geral ajustada para contraste */
+            color: #1a1a1a; 
             line-height: 1.6;
+            position: relative;
+        }
+
+        /* Imagem de Fundo Fixa (Fade no Scroll) */
+        .bg-imagem-fixa {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-image: url('ABC.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.35; /* Começa levemente transparente */
+            z-index: -1;
+            transition: opacity 0.1s linear;
         }
 
         /* Barra de Navegação (Aba Superior) */
@@ -28,27 +45,28 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background-color: #B177ED; /* Tom de ROXO ligeiramente mais escuro para destaque */
+            background-color: #B177ED; /* Tom de ROXO ligeiramente mais escuro */
             padding: 15px 0;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             z-index: 1000;
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
+            flex-wrap: wrap; /* Garante ajuste em telas menores */
         }
 
         /* Botões Brancos */
         .nav-btn {
             background-color: #FFFFFF;
-            color: #000000; /* Texto em preto */
+            color: #000000; 
             border: none;
-            padding: 12px 24px;
-            font-size: 16px;
+            padding: 10px 20px;
+            font-size: 14px;
             font-weight: bold;
             text-transform: uppercase;
             border-radius: 5px;
             cursor: pointer;
-            text-decoration: none; /* Remove sublinhado de link */
+            text-decoration: none; 
             transition: all 0.3s ease;
         }
 
@@ -61,7 +79,7 @@
 
         /* Seções de Conteúdo */
         .section {
-            padding: 120px 20px 8px 20px; /* Padding superior maior para não cobrir o texto com a barra fixa */
+            padding: 120px 20px 60px 20px; 
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -75,39 +93,56 @@
         .section h2 {
             font-size: 2.5rem;
             margin-bottom: 20px;
-            border-bottom: 3px solid #B177ED; /* Linha roxa para combinar */
+            border-bottom: 3px solid #B177ED; 
             padding-bottom: 10px;
-            color: #4A148C; /* Roxo escuro para destaque */
+            color: #4A148C; /* Roxo escuro */
         }
 
         .section p {
             font-size: 1.3rem;
             max-width: 700px;
-            color: #000000; /* Texto em preto para perfeita leitura sobre o fundo claro */
+            color: #000000; 
         }
 
-        /* Estilo para destacar o nome da pessoa */
-        .nome-usuario {
-            font-weight: bold;
+        /* Estilos específicos da Seção Home + Animações */
+        .hero-title {
+            font-size: 3.5rem;
             color: #4A148C;
+            margin-bottom: 20px;
+            animation: fadeInDown 1.2s ease-out forwards;
         }
 
-        /* Centralizar a seção da imagem */
-        .img-container {
-            display: flex;
-            justify-content: center;
-            padding: 20px 0;
+        .hero-subtitle {
+            font-size: 1.5rem;
+            max-width: 650px;
+            animation: fadeInUp 1.5s ease-out forwards;
         }
 
-        .img-container img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        /* Definições das Animações */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        /* Linha divisória sutil */
-        <hr> {
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Linha divisória */
+        hr {
             border: 0;
             height: 1px;
             background: rgba(0, 0, 0, 0.15);
@@ -118,42 +153,62 @@
 </head>
 <body>
 
+    <div class="bg-imagem-fixa" id="bgImagem"></div>
+
     <nav class="navbar">
+        <a href="#home" class="nav-btn">Home</a>
         <a href="#plano-abc" class="nav-btn">Plano ABC</a>
+        <a href="#agrofloresta" class="nav-btn">Agrofloresta</a>
+        <a href="#agricultura-regenerativa" class="nav-btn">Agri. Regenerativa</a>
         <a href="#sistema-indoor" class="nav-btn">Sistema Indoor</a>
     </nav>
 
-    <section id="plano-abc" class="section">
-        <h2>Plano ABC</h2>
-        <p>Olá, <span class="nome-usuario nome-txt">visitante</span>! Seja bem-vindo. Aqui entrará a sua explicação detalhada sobre o Plano de Agricultura de Baixa Emissão de Carbono. Você pode abordar as diretrizes do plano, os compromissos com a redução de gases de efeito estufa e o impacto positivo desse modelo de sustentabilidade na agricultura brasileira moderna.</p>
+    <section id="home" class="section">
+        <h1 class="hero-title">O Futuro do Campo</h1>
+        <p class="hero-subtitle">Seja bem-vindo ao portal da agricultura sustentável. Descubra como a tecnologia, o manejo consciente e o respeito à biodiversidade estão transformando a produção de alimentos no Brasil e no mundo.</p>
     </section>
 
-    <section class="img-container">
-        <img src="ABC.jpeg" alt="Imagem que representa a baixa emissão de carbono">
+    <hr>
+
+    <section id="plano-abc" class="section">
+        <h2>Plano ABC</h2>
+        <p>O Plano de Agricultura de Baixa Emissão de Carbono é uma das principais políticas públicas ambientais do setor agropecuário brasileiro. Ele promove a adoção de tecnologias sustentáveis que garantem a produtividade agrícola enquanto reduzem a emissão de gases de efeito estufa e recuperam áreas degradadas.</p>
+    </section>
+
+    <hr>
+
+    <section id="agrofloresta" class="section">
+        <h2>Agrofloresta</h2>
+        <p>Os sistemas agroflorestais combinam o cultivo de plantas agrícolas e árvores em uma mesma área. Essa prática imita a estrutura e a dinâmica de uma floresta natural, protegendo o solo contra erosões, enriquecendo o ecossistema local com nutrientes e gerando uma produção diversificada e sustentável ao produtor.</p>
+    </section>
+
+    <hr>
+
+    <section id="agricultura-regenerativa" class="section">
+        <h2>Agricultura Regenerativa</h2>
+        <p>Mais do que apenas conservar, a agricultura regenerativa busca restaurar a saúde do meio ambiente. Ela foca no reestabelecimento biológico do solo, no aumento da biodiversidade, na otimização do ciclo da água e no sequestro de carbono ativo, criando sistemas de produção resilientes e independentes de químicos pesados.</p>
     </section>
 
     <hr>
 
     <section id="sistema-indoor" class="section">
         <h2>Sistema Indoor</h2>
-        <p>Como você pode ver, <span class="nome-usuario nome-txt">visitante</span>, o funcionamento do Sistema Indoor é fascinante. O cultivo em ambientes controlados (fazendas verticais, hidroponia automatizada, iluminação LED artificial) otimiza os recursos hídricos e espaciais, servindo como um braço tecnológico essencial para os objetivos do Plano ABC.</p>
+        <p>O funcionamento do Sistema Indoor é fascinante. O cultivo em ambientes controlados (como fazendas verticais, hidroponia automatizada e iluminação LED artificial) otimiza os recursos hídricos e espaciais. Ele atua como um braço tecnológico essencial para os objetivos ecológicos do campo modernos, aproximando a produção dos grandes centros urbanos.</p>
     </section>
 
     <script>
-        // Executa a função assim que a página termina de carregar
-        window.addEventListener('DOMContentLoaded', () => {
-            // Pergunta o nome do usuário através de um pop-up
-            let nome = prompt("Seja bem-vindo! Qual é o seu nome?");
+        // Função para sumir com a imagem de fundo conforme rola a página
+        window.addEventListener('scroll', () => {
+            const bgImagem = document.getElementById('bgImagem');
+            const scrollMaximo = window.innerHeight; // A imagem sumirá por completo ao rolar 1 tela inteira
+            const scrollAtual = window.scrollY;
 
-            // Se o usuário digitou algo e não apenas deu espaços em branco
-            if (nome && nome.trim() !== "") {
-                // Seleciona todos os elementos que possuem a classe 'nome-txt'
-                const elementosNome = document.querySelectorAll('.nome-txt');
-                
-                // Substitui o texto de cada um deles pelo nome digitado
-                elementosNome.forEach(elemento => {
-                    elemento.textContent = nome.trim();
-                });
+            if (scrollAtual <= scrollMaximo) {
+                // Reduz proporcionalmente o valor da opacidade inicial (0.35) até chegar a 0
+                let novaOpacidade = 0.35 * (1 - (scrollAtual / scrollMaximo));
+                bgImagem.style.opacity = novaOpacidade;
+            } else {
+                bgImagem.style.opacity = 0;
             }
         });
     </script>
