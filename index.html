@@ -19,7 +19,7 @@
 
         body {
             background-color: #D9BBFA; /* fundo ROXO clarinho */
-            color: #1a1a1a;
+            color: #1a1a1a; /* Cor do texto geral ajustada para contraste */
             line-height: 1.6;
         }
 
@@ -61,9 +61,102 @@
 
         /* Seções de Conteúdo */
         .section {
-            padding: 90px 40px 40px 40px; /* Reduzido o padding superior para o título subir */
+            padding: 120px 20px 8px 20px; /* Padding superior maior para não cobrir o texto com a barra fixa */
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start; /* Alinha o conteúdo a partir do topo */
-            max-width: 1
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #B177ED; /* Linha roxa para combinar */
+            padding-bottom: 10px;
+            color: #4A148C; /* Roxo escuro para destaque */
+        }
+
+        .section p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            color: #000000; /* Texto em preto para perfeita leitura sobre o fundo claro */
+        }
+
+        /* Estilo para destacar o nome da pessoa */
+        .nome-usuario {
+            font-weight: bold;
+            color: #4A148C;
+        }
+
+        /* Centralizar a seção da imagem */
+        .img-container {
+            display: flex;
+            justify-content: center;
+            padding: 20px 0;
+        }
+
+        .img-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Linha divisória sutil */
+        <hr> {
+            border: 0;
+            height: 1px;
+            background: rgba(0, 0, 0, 0.15);
+            width: 80%;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="#plano-abc" class="nav-btn">Plano ABC</a>
+        <a href="#sistema-indoor" class="nav-btn">Sistema Indoor</a>
+    </nav>
+
+    <section id="plano-abc" class="section">
+        <h2>Plano ABC</h2>
+        <p>Olá, <span class="nome-usuario nome-txt">visitante</span>! Seja bem-vindo. Aqui entrará a sua explicação detalhada sobre o Plano de Agricultura de Baixa Emissão de Carbono. Você pode abordar as diretrizes do plano, os compromissos com a redução de gases de efeito estufa e o impacto positivo desse modelo de sustentabilidade na agricultura brasileira moderna.</p>
+    </section>
+
+    <section class="img-container">
+        <img src="ABC.jpeg" alt="Imagem que representa a baixa emissão de carbono">
+    </section>
+
+    <hr>
+
+    <section id="sistema-indoor" class="section">
+        <h2>Sistema Indoor</h2>
+        <p>Como você pode ver, <span class="nome-usuario nome-txt">visitante</span>, o funcionamento do Sistema Indoor é fascinante. O cultivo em ambientes controlados (fazendas verticais, hidroponia automatizada, iluminação LED artificial) otimiza os recursos hídricos e espaciais, servindo como um braço tecnológico essencial para os objetivos do Plano ABC.</p>
+    </section>
+
+    <script>
+        // Executa a função assim que a página termina de carregar
+        window.addEventListener('DOMContentLoaded', () => {
+            // Pergunta o nome do usuário através de um pop-up
+            let nome = prompt("Seja bem-vindo! Qual é o seu nome?");
+
+            // Se o usuário digitou algo e não apenas deu espaços em branco
+            if (nome && nome.trim() !== "") {
+                // Seleciona todos os elementos que possuem a classe 'nome-txt'
+                const elementosNome = document.querySelectorAll('.nome-txt');
+                
+                // Substitui o texto de cada um deles pelo nome digitado
+                elementosNome.forEach(elemento => {
+                    elemento.textContent = nome.trim();
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
