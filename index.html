@@ -18,7 +18,7 @@
         }
 
         body {
-            background-color: #D9BBFA; /* fundo ROXO clarinho */
+            background-color: #E8F9ED; /* Fundo VERDE clarinho */
             color: #1a1a1a; 
             line-height: 1.6;
             position: relative;
@@ -35,7 +35,7 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            opacity: 0.35; /* Começa levemente transparente */
+            opacity: 0.25; /* Opacidade levemente reduzida para ajustar com o fundo verde */
             z-index: -1;
             transition: opacity 0.1s linear;
         }
@@ -45,9 +45,9 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background-color: #B177ED; /* Tom de ROXO ligeiramente mais escuro */
+            background-color: #0A7835; /* Tom de VERDE escuro e intenso */
             padding: 15px 0;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             z-index: 1000;
             display: flex;
             justify-content: center;
@@ -58,7 +58,7 @@
         /* Botões Brancos */
         .nav-btn {
             background-color: #FFFFFF;
-            color: #000000; 
+            color: #0A7835; 
             border: none;
             padding: 10px 20px;
             font-size: 14px;
@@ -70,10 +70,12 @@
             transition: all 0.3s ease;
         }
 
+        /* Efeito Hover adaptado para Verde */
         .nav-btn:hover {
-            background-color: #B9A1D1;
+            background-color: #76E597;
+            color: #08421D;
             transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
         }
 
         /* Seções de Conteúdo */
@@ -92,12 +94,12 @@
         .section h2 {
             font-size: 2.5rem;
             margin-bottom: 25px;
-            border-bottom: 3px solid #B177ED; 
+            border-bottom: 3px solid #0fd65b; /* Detalhe no verde de referência */
             padding-bottom: 10px;
-            color: #4A148C; 
+            color: #08421D; /* Verde muito intenso / escuro */
         }
 
-        /* Contornos quadrados com pontas arredondadas para os textos explicativos */
+        /* Contornos das caixas de texto */
         .box-explicacao {
             background-color: #FFFFFF; 
             color: #000000; 
@@ -106,14 +108,14 @@
             width: 100%;
             padding: 35px; 
             border-radius: 15px; 
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1); 
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08); 
             text-align: center;
         }
 
-        /* Estilos específicos da Seção Home + Animações */
+        /* Seção Home */
         .hero-title {
             font-size: 3.5rem;
-            color: #4A148C;
+            color: #08421D;
             margin-bottom: 20px;
             animation: fadeInDown 1.2s ease-out forwards;
         }
@@ -121,14 +123,14 @@
         .hero-subtitle {
             font-size: 1.5rem;
             max-width: 650px;
-            color: #000000;
+            color: #1a1a1a;
             animation: fadeInUp 1.5s ease-out forwards;
         }
 
-        /* Botão Chamativo de Ação */
+        /* Botão Temático baseado na cor principal #0fd65b */
         .btn-futuro {
-            background-color: #2E7D32; /* Verde sustentável e chamativo */
-            color: #FFFFFF;
+            background-color: #0fd65b; 
+            color: #08421D;
             font-size: 1.3rem;
             font-weight: bold;
             text-transform: uppercase;
@@ -136,27 +138,28 @@
             border: none;
             border-radius: 15px;
             cursor: pointer;
-            box-shadow: 0 6px 15px rgba(46, 125, 50, 0.4);
+            box-shadow: 0 6px 20px rgba(15, 214, 91, 0.4);
             transition: all 0.3s ease;
             margin-top: 25px;
         }
 
         .btn-futuro:hover {
-            background-color: #1B5E20;
+            background-color: #0cb54c;
+            color: #FFFFFF;
             transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(46, 125, 50, 0.6);
+            box-shadow: 0 8px 25px rgba(12, 181, 76, 0.5);
         }
 
-        /* Estilos da Segunda Página (Painel de Decisões) */
+        /* Painel de Decisões (Segunda Página) */
         .pagina-decisoes {
-            display: none; /* Escondido por padrão */
+            display: none; 
             padding: 60px 20px;
             min-height: 100vh;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            max-width: 800px;
+            max-width: 850px;
             margin: 0 auto;
         }
 
@@ -164,14 +167,20 @@
             background-color: #FFFFFF;
             padding: 40px;
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             width: 100%;
             margin-top: 30px;
         }
 
+        .card-decisao h3 {
+            color: #08421D;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+        }
+
         .titulo-decisoes {
             font-size: 2.8rem;
-            color: #4A148C;
+            color: #08421D;
             margin-bottom: 10px;
         }
 
@@ -181,13 +190,13 @@
             color: #333;
         }
 
-        /* Botões das Opções do Quiz */
+        /* Botões de Opção do Quiz em Tons Verdes */
         .btn-opcao {
             display: block;
             width: 100%;
-            background-color: #F3E5F5;
+            background-color: #F0FBF2; /* Verde muito claro para o fundo interno */
             color: #1a1a1a;
-            border: 2px solid #E1BEE7;
+            border: 2px solid #C3EFCF;
             padding: 18px 25px;
             margin: 15px 0;
             font-size: 1.1rem;
@@ -199,12 +208,12 @@
         }
 
         .btn-opcao:hover {
-            background-color: #E1BEE7;
-            border-color: #B177ED;
+            background-color: #C3EFCF;
+            border-color: #0fd65b;
             transform: translateX(5px);
         }
 
-        /* Resultados Finais */
+        /* Alertas de Veredito Final */
         .resultado-texto {
             font-size: 1.6rem;
             font-weight: bold;
@@ -213,12 +222,12 @@
             border-radius: 10px;
         }
 
-        .excelente { color: #1B5E20; background-color: #E8F5E9; }
-        .media { color: #E65100; background-color: #FFF3E0; }
-        .ruim { color: #B71C1C; background-color: #FFEBEE; }
+        .excelente { color: #0A5C24; background-color: #C3EFCF; border: 2px solid #0fd65b; }
+        .media { color: #E65100; background-color: #FFF3E0; border: 2px solid #FFB74D; }
+        .ruim { color: #B71C1C; background-color: #FFEBEE; border: 2px solid #EF5350; }
 
         .btn-reiniciar {
-            background-color: #4A148C;
+            background-color: #0A7835;
             color: #FFFFFF;
             padding: 12px 25px;
             border: none;
@@ -228,6 +237,11 @@
             margin-top: 25px;
             text-transform: uppercase;
             font-weight: bold;
+            transition: background 0.2s;
+        }
+
+        .btn-reiniciar:hover {
+            background-color: #08421D;
         }
 
         /* Definições das Animações */
@@ -245,7 +259,7 @@
         hr {
             border: 0;
             height: 1px;
-            background: rgba(0, 0, 0, 0.15);
+            background: rgba(0, 0, 0, 0.08);
             width: 80%;
             margin: 0 auto;
         }
@@ -324,7 +338,7 @@
             const scrollAtual = window.scrollY;
 
             if (scrollAtual <= scrollMaximo) {
-                let novaOpacidade = 0.35 * (1 - (scrollAtual / scrollMaximo));
+                let novaOpacidade = 0.25 * (1 - (scrollAtual / scrollMaximo));
                 bgImagem.style.opacity = novaOpacidade;
             } else {
                 bgImagem.style.opacity = 0;
@@ -334,37 +348,69 @@
         // Lógica de navegação para a "Segunda Página"
         function irParaDecisoes() {
             document.getElementById('conteudo-principal').style.display = 'none';
-            document.getElementById('bgImagem').style.opacity = '0'; // Garante fundo sólido na segunda aba
+            document.getElementById('bgImagem').style.opacity = '0'; 
             const painel = document.getElementById('conteudo-decisoes');
             painel.style.display = 'flex';
             window.scrollTo(0, 0);
             inicializarQuiz();
         }
 
-        // Dados do simulador interativo de impacto ambiental
+        // Banco de perguntas expandido para 7 fases completas
         const perguntas = [
             {
                 titulo: "Fase 1: Preparo e Manejo do Solo",
                 opcoes: [
-                    { texto: "Adotar o Plantio Direto sobre a palhada e fazer rotação de culturas para nutrir o solo naturalmente.", peso: 3 }, // Boa
-                    { texto: "Utilizar o método tradicional de aração mecânica leve, mantendo o solo limpo sem queimadas.", peso: 2 }, // Neutra
-                    { texto: "Realizar queimadas para limpar o terreno rapidamente e usar fertilizantes químicos pesados em larga escala.", peso: 1 } // Ruim
+                    { texto: "Adotar o Plantio Direto sobre a palhada e fazer rotação de culturas para nutrir o solo naturalmente.", peso: 3 }, 
+                    { texto: "Utilizar o método tradicional de aração mecânica leve, mantendo o solo limpo sem queimadas.", peso: 2 }, 
+                    { texto: "Realizar queimadas para limpar o terreno rapidamente e usar fertilizantes químicos pesados em larga escala.", peso: 1 } 
                 ]
             },
             {
                 titulo: "Fase 2: Irrigação e Gestão de Recursos Hídricos",
                 opcoes: [
-                    { texto: "Instalar sistemas de gotejamento automatizados integrados com cisternas de captação de água da chuva.", peso: 3 }, // Boa
-                    { texto: "Utilizar aspersores comuns programados por horários fixos para evitar o ápice do calor do dia.", peso: 2 }, // Neutra
-                    { texto: "Desviar o leito de um rio próximo para bombear água de forma contínua e inundar os sulcos de plantio.", peso: 1 } // Ruim
+                    { texto: "Instalar sistemas de gotejamento automatizados integrados com cisternas de captação de água da chuva.", peso: 3 }, 
+                    { texto: "Utilizar aspersores comuns programados por horários fixos para evitar o ápice do calor do dia.", peso: 2 }, 
+                    { texto: "Desviar o leito de um rio próximo para bombear água de forma contínua e inundar os sulcos de plantio.", peso: 1 } 
                 ]
             },
             {
                 titulo: "Fase 3: Proteção de Cultivos e Controle de Pragas",
                 opcoes: [
-                    { texto: "Implementar o Manejo Integrado de Pragas (MIP), usando insetos benéficos protetores e bioinsumos locais.", peso: 3 }, // Boa
-                    { texto: "Aplicar defensivos químicos tradicionais preventivos seguindo estritamente a janela do calendário.", peso: 2 }, // Neutra
-                    { texto: "Pulverizar defensivos sintéticos pesados via aérea ao menor sinal de qualquer inseto na lavoura.", peso: 1 } // Ruim
+                    { texto: "Implementar o Manejo Integrado de Pragas (MIP), usando insetos benéficos protetores e bioinsumos locais.", peso: 3 }, 
+                    { texto: "Aplicar defensivos químicos tradicionais preventivos seguindo estritamente a janela do calendário.", peso: 2 }, 
+                    { texto: "Pulverizar defensivos sintéticos pesados via aérea ao menor sinal de qualquer inseto na lavoura.", peso: 1 } 
+                ]
+            },
+            {
+                titulo: "Fase 4: Tratamento de Dejetos e Resíduos Animais",
+                opcoes: [
+                    { texto: "Instalar biodigestores para tratar o esterco, gerando biogás para a propriedade e biofertilizantes de alta qualidade.", peso: 3 },
+                    { texto: "Armazenar os dejetos em esterqueiras cobertas para curar o material antes de utilizá-lo na adubação comum.", peso: 2 },
+                    { texto: "Descartar os resíduos diretamente em valas nos fundos da propriedade, deixando infiltrar perto de lençóis freáticos.", peso: 1 }
+                ]
+            },
+            {
+                titulo: "Fase 5: Matriz Energética da Propriedade",
+                opcoes: [
+                    { texto: "Cobrir os galpões com painéis solares fotovoltaicos e utilizar biocombustíveis renováveis nos maquinários.", peso: 3 },
+                    { texto: "Utilizar exclusivamente a energia elétrica da rede convencional, sem fontes alternativas ou automações de corte.", peso: 2 },
+                    { texto: "Manter geradores antigos movidos a óleo diesel operando em capacidade máxima para baratear custos operacionais.", peso: 1 }
+                ]
+            },
+            {
+                titulo: "Fase 6: Manejo de Pastagens e Pecuária",
+                opcoes: [
+                    { texto: "Adotar o sistema de Integração Lavoura-Pecuária-Floresta (ILPF) com pastejo rotacionado por piquetes.", peso: 3 },
+                    { texto: "Criar o gado de forma extensiva em pastos fixos tradicionais, aplicando calagem básica quando o capim enfraquece.", peso: 2 },
+                    { texto: "Praticar o superpastoreio, superlotando os pastos até expor a terra nua e gerar processos graves de erosão.", peso: 1 }
+                ]
+            },
+            {
+                titulo: "Fase 7: Preservação de Áreas Naturais e Matas Ciliares",
+                opcoes: [
+                    { texto: "Isolar totalmente as Áreas de Preservação Permanente (APPs) e reflorestar as margens de rios com mudas nativas.", peso: 3 },
+                    { texto: "Manter as cercas limítrofes da mata nativa existente apenas para cumprir as obrigações legais da reserva.", peso: 2 },
+                    { texto: "Avançar o plantio e o gado sobre as margens dos rios e nascentes para aproveitar o máximo de espaço produtivo.", peso: 1 }
                 ]
             }
         ];
@@ -384,7 +430,7 @@
                 const dados = perguntas[perguntaAtual];
                 let htmlOpcoes = `<h3>${dados.titulo}</h3>`;
                 
-                dados.opcoes.forEach((opcao, index) => {
+                dados.opcoes.forEach((opcao) => {
                     htmlOpcoes += `<button class="btn-opcao" onclick="computarDecisao(${opcao.peso})">${opcao.texto}</button>`;
                 });
                 
