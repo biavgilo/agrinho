@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Futuro Rural</title>
     <style>
-        /* Variáveis de Tema (Modo Claro por Padrão) */
+        /* variaveis modo claro padrão */
         :root {
             --bg-body: #E8F9ED;
             --text-main: #1a1a1a;
@@ -424,7 +424,7 @@
             background-color: #08421D;
         }
 
-        /* Animações */
+        /* animações */
         @keyframes fadeInDown {
             from { opacity: 0; transform: translateY(-30px); }
             to { opacity: 1; transform: translateY(0); }
@@ -440,7 +440,7 @@
             50% { transform: translateY(6px); }
         }
 
-        /* Linha divisória mais suave */
+        /* divisória suave */
         hr {
             border: 0;
             height: 1px;
@@ -456,7 +456,7 @@
     <div class="bg-imagem-fixa" id="bgImagem"></div>
     <div class="bg-imagem-quiz" id="bgImagemQuiz"></div>
 
-    <!-- Barra de Progresso Fina no Topo -->
+    <!-- barrinha de progresso de leitura  -->
     <div class="progress-container" id="containerProgresso">
         <div class="progress-bar" id="barraProgresso"></div>
     </div>
@@ -587,7 +587,7 @@ Nesse modelo, tudo é controlado artificialmente por tecnologia: lâmpadas espec
     <script>
         let nomeUsuario = "";
 
-        // Função para alternar entre Tema Claro e Escuro
+        // função para alternar entre claro e escuro
         function alternarTema() {
             const body = document.documentElement;
             const btnTema = document.getElementById('btnTema');
@@ -601,9 +601,9 @@ Nesse modelo, tudo é controlado artificialmente por tecnologia: lâmpadas espec
             }
         }
 
-        // Evento que gerencia a rolagem da página (Imagem fixa + Barra de Progresso)
+        // conforme rola para baixo a imagem some
         window.addEventListener('scroll', () => {
-            // 1. Efeito da Imagem de Fundo
+            // imagem de Fundo
             const bgImagem = document.getElementById('bgImagem');
             const scrollMaximo = window.innerHeight; 
             const scrollAtual = window.scrollY;
@@ -615,7 +615,7 @@ Nesse modelo, tudo é controlado artificialmente por tecnologia: lâmpadas espec
                 bgImagem.style.opacity = 0;
             }
 
-            // 2. Efeito da Barra de Progresso de Leitura
+            //barra progresso de leitura
             const totalScrollavel = document.documentElement.scrollHeight - window.innerHeight;
             if (totalScrollavel > 0) {
                 const percentual = (scrollAtual / totalScrollavel) * 100;
@@ -623,7 +623,7 @@ Nesse modelo, tudo é controlado artificialmente por tecnologia: lâmpadas espec
             }
         });
 
-        // Garantir que volta ao topo no recarregamento
+        // volta pro inicio quando recarrega o site
         window.addEventListener('DOMContentLoaded', () => {
             window.scrollTo(0, 0);
             if (history.replaceState) {
@@ -631,7 +631,7 @@ Nesse modelo, tudo é controlado artificialmente por tecnologia: lâmpadas espec
             }
         });
 
-        // Tela intermediária pedindo o nome
+        // tela pedindo o nome
         function solicitarNome() {
             const box = document.getElementById('box-inicio-quiz');
             box.innerHTML = `
@@ -654,18 +654,19 @@ Nesse modelo, tudo é controlado artificialmente por tecnologia: lâmpadas espec
             irParaDecisoes();
         }
 
-        // Navegação para a segunda página (oculta barra de progresso)
+        // navegação para a segunda página (oculta barra de progresso)
         function irParaDecisoes() {
             document.getElementById('containerProgresso').style.display = 'none';
             document.getElementById('conteudo-principal').style.display = 'none';
-            document.getElementById('bgImagem').style.opacity = '0'; 
+            document.getElementById('bgImagem').style.display = 'none';
+            document.getElementById('bgImagemQuiz').style.display = 'block';
             const painel = document.getElementById('conteudo-decisoes');
             painel.style.display = 'flex';
             window.scrollTo(0, 0);
             inicializarQuiz();
         }
 
-        // Banco de perguntas para 7 fases
+        // perguntas para 7 fases
         const perguntas = [
             {
                 titulo: "Fase 1: Preparo e Manejo do Solo",
