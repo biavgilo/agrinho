@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plano ABC & Sistema Indoor</title>
+    <title>Futuro Rural</title>
     <style>
-        /* Configurações Gerais e Rolagem Suave */
+        /* Rolagem Suave */
         * {
             margin: 0;
             padding: 0;
@@ -18,50 +18,69 @@
         }
 
         body {
-            background-color: #D9BBFA; /* fundo ROXO clarinho */
-            color: #FFFFFF; /* cor letra */
+            background-color: #E8F9ED; /* Fundo VERDE clarinho */
+            color: #1a1a1a; 
             line-height: 1.6;
+            position: relative;
         }
 
-        /* Barra de Navegação (Aba Superior) */
+        /* Imagem de Fundo Fixa  */
+        .bg-imagem-fixa {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-image: url('ABC.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.25; /* Opacidade menor para ajustar com o fundo verde */
+            z-index: -1;
+            transition: opacity 0.1s linear;
+        }
+
+        /* Barra de Navegação */
         .navbar {
             position: fixed;
             top: 0;
             width: 100%;
-            background-color: #B177ED; /* Tom de ROXO ligeiramente mais escuro para destaque */
+            background-color: #0A7835; /* Tom de VERDE escuroo */
             padding: 15px 0;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             z-index: 1000;
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
+            flex-wrap: wrap;
         }
 
         /* Botões Brancos */
         .nav-btn {
             background-color: #FFFFFF;
-            color: #000000; /* Texto em preto */
+            color: #0A7835; 
             border: none;
-            padding: 12px 24px;
-            font-size: 16px;
+            padding: 10px 20px;
+            font-size: 14px;
             font-weight: bold;
             text-transform: uppercase;
             border-radius: 5px;
             cursor: pointer;
-            text-decoration: none; /* Remove sublinhado de link */
+            text-decoration: none; 
             transition: all 0.3s ease;
         }
 
-        /* Efeito ao passar o mouse (Hover) */
+        /* Efeito adaptado para Verde */
         .nav-btn:hover {
-            background-color: #B9A1D1;
+            background-color: #76E597;
+            color: #08421D;
             transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
         }
 
         /* Seções de Conteúdo */
         .section {
-            padding: 120px 20px 8px 20px; /* Padding superior maior para não cobrir o texto com a barra fixa */
+            padding: 120px 20px 60px 20px; 
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -74,21 +93,216 @@
 
         .section h2 {
             font-size: 2.5rem;
-            margin-bottom: 20px;
-            border-bottom: 3px solid #FFFFFF;
+            margin-bottom: 25px;
+            border-bottom: 3px solid #0fd65b; 
             padding-bottom: 10px;
+            color: #08421D; /* Verde muito intenso */
         }
 
-        .section p {
+        /* Contornos das caixas de texto */
+        .box-explicacao {
+            background-color: #FFFFFF; 
+            color: #000000; 
+            font-size: 1.3rem;
+            max-width: 750px;
+            width: 100%;
+            padding: 35px; 
+            border-radius: 15px; 
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08); 
+            text-align: center;
+            margin: 20px;
+        }
+
+        .box-explicacao p {
+            margin-bottom: 15px;
+        }
+
+        .box-explicacao p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* seção inicio */
+        .hero-title {
+            font-size: 2.5rem;
+            color: #08421D;
+            margin-bottom: 20px;
+            animation: fadeInDown 1.2s ease-out forwards;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            max-width: 650px;
+            color: #1a1a1a;
+            animation: fadeInUp 1.5s ease-out forwards;
+        }
+
+        /* botão */
+        .btn-futuro {
+            background-color: #0fd65b; 
+            color: #08421D;
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            padding: 15px 35px;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(15, 214, 91, 0.4);
+            transition: all 0.3s ease;
+            margin-top: 25px;
+        }
+
+        .btn-futuro:hover {
+            background-color: #0cb54c;
+            color: #FFFFFF;
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(12, 181, 76, 0.5);
+        }
+
+        /* Painel de Decisões Segunda Página */
+        .pagina-decisoes {
+            display: none; 
+            padding: 60px 20px;
+            min-height: 100vh;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .card-decisao {
+            background-color: #FFFFFF;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            margin-top: 30px;
+        }
+
+        /*alinhar a logo e a pergunta  */
+        .header-pergunta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        /* alinhar a logo e o título principal da segunda página */
+        .header-decisoes {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+
+        .logo-pergunta {
+            height: 50px; /* tamanho da logo do lado da fase do quiz */
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo-titulo {
+            height: 280px; /* Tamanho da logo ao lado do título principal */
+            width: auto;
+            object-fit: contain;
+        }
+
+        .card-decisao h3 {
+            color: #08421D;
+            font-size: 1.6rem;
+            margin-bottom: 0; 
+            text-align: left;
+        }
+
+        .titulo-decisoes {
+            font-size: 2.8rem;
+            color: #08421D;
+            margin-bottom: 0;
+        }
+
+        .sub-decisoes {
             font-size: 1.2rem;
-            max-width: 700px;
+            margin-bottom: 30px;
+            color: #333;
         }
 
-        /* Linha divisória sutil */
+        /* Botões de Opção do Quiz  */
+        .btn-opcao {
+            display: block;
+            width: 100%;
+            background-color: #F0FBF2; /* Verde muito claro para o fundo interno */
+            color: #1a1a1a;
+            border: 2px solid #C3EFCF;
+            padding: 18px 25px;
+            margin: 15px 0;
+            font-size: 1.1rem;
+            text-align: left;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+
+        .btn-opcao:hover {
+            background-color: #C3EFCF;
+            border-color: #0fd65b;
+            transform: translateX(5px);
+        }
+
+        /* Resposta final do quiz*/
+        .resultado-texto {
+            font-size: 1.6rem;
+            font-weight: bold;
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        
+     /* Resultado do quiz */
+        .excelente { color: #0A5C24; background-color: #C3EFCF; border: 2px solid #0fd65b; }
+        .media { color: #E65100; background-color: #FFF3E0; border: 2px solid #FFB74D; }
+        .ruim { color: #B71C1C; background-color: #FFEBEE; border: 2px solid #EF5350; }
+
+        .btn-reiniciar {
+            background-color: #0A7835;
+            color: #FFFFFF;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 25px;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+
+        /*botão para voltar no inicio da explicação*/
+        .btn-reiniciar:hover {
+            background-color: #08421D;
+        }
+
+        /* animações */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Linha divisória */
         hr {
             border: 0;
             height: 1px;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(0, 0, 0, 0.08);
             width: 80%;
             margin: 0 auto;
         }
@@ -96,28 +310,267 @@
 </head>
 <body>
 
-    <nav class="navbar">
-        <a href="#plano-abc" class="nav-btn">Plano ABC</a>
-        <a href="#sistema-indoor" class="nav-btn">Sistema Indoor</a>
-    </nav>
 
-    <section id="plano-abc" class="section">
-        <h2>Plano ABC</h2>
-        <p>Aqui entrara a sua explicação detalhada sobre o Plano de Agricultura de Baixa Emissão de Carbono. Você pode abordar as diretrizes do plano, os compromissos com a redução de gases de efeito estufa e o impacto positivo desse modelo de sustentabilidade na agricultura brasileira moderna.</p>
-    </section>
+    <div class="bg-imagem-fixa" id="bgImagem"></div>
 
-    <section>
-        <img src="ABC.jpeg" alt="imagem qeu representa a baixa emissão de carbono">
-    </section>
+    <div id="conteudo-principal">
+        <nav class="navbar">
+            <a href="#inicio" class="nav-btn">Início</a>
+            <a href="#plano-abc" class="nav-btn">Plano ABC</a>
+            <a href="#agrofloresta" class="nav-btn">Agrofloresta</a>
+            <a href="#agricultura-regenerativa" class="nav-btn">Agricultura Regenerativa</a>
+            <a href="#sistema-indoor" class="nav-btn">Sistema Indoor</a>
+        </nav>
 
-    <hr>
+        <section id="inicio" class="section">
+            <h1 class="hero-title">Como faremos o campo produzir sem destruir o amanhã?</h1>
+            <p class="hero-subtitle">Seja bem-vindo ao portal do <b>Futuro Rural</b>. Descubra como a tecnologia, o manejo consciente e o respeito à biodiversidade influenciam a produção de alimentos no Brasil e no mundo.</p>
+        </section>
 
-    <section id="sistema-indoor" class="section">
-        <h2>Sistema Indoor</h2>
-        <p>Aqui você explicará o funcionamento do Sistema Indoor. Detalhe como o cultivo em ambientes controlados (fazendas verticais, hidroponia automatizada, iluminação LED artificial) otimiza os recursos hídricos e espaciais, servindo como um braço tecnológico essencial para os objetivos do Plano ABC.</p>
-    </section>
+        <hr>
 
+        <section id="plano-abc" class="section"> 
+            <h2>Plano ABC</h2>
+            <div class="box-explicacao">
+                <p>O Plano de Agricultura de Baixa Emissão de Carbono é uma estratégia do Governo Federal Brasileiro, criado em 2010, com o intuito de promover a redução da emissão de gases de efeito estufa na agropecuária, usar a natureza de forma mais inteligente e criar uma produção mais resistente, preparando o setor para enfrentar as mudanças no clima.</p>
+            </div>
+
+            <hr>
+            
+            <h3> Suas Tecnologias</h3>
+            
+            <div class="box-explicacao">
+                <p><b> Sistema Integrado: </b> Esses sistemas reúnem diferentes atividades — como agricultura, pecuária e silvicultura — em uma mesma área para trabalharem em conjunto. Considerados os modelos mais sustentáveis para a produção de alimentos, fibras e energia, eles variam em complexidade. No plano ABC+, o foco está em duas modalidades: os Sistemas de Integração Lavoura-Pecuária-Floresta (ILPF) e os Sistemas Agroflorestais (SAF).</p>
+            </div>
+
+            <hr>
+            
+            <div class="box-explicacao">
+                <p><b> Bioinsumos: </b> O uso de produtos biológicos na agricultura melhora a produção e ajuda a proteger o meio ambiente, sendo que os inoculantes (insumos biológicos compostos por microrganismos vivos, como bactérias e fungos) são muito usados no Brasil. Antes, o Plano ABC focava apenas na Fixação Biológica de Nitrogênio (FBN). Agora, na fase ABC+, o programa aumentou esse incentivo: além da FBN, ele também apoia outros microrganismos que ajudam as plantas a crescer e a aproveitar melhor os nutrientes, além do uso de defensores naturais para o controle de pragas.</p>
+            </div>
+
+            <hr>
+            
+            <div class="box-explicacao">
+                <p><b>Terminação Intensiva: </b> Essa técnica melhora a alimentação dos bois na fase final de criação através do confinamento ou do uso de ração no pasto. Para isso, os animais recebem alimentos mais ricos em energia, como grãos e farelos. Esse processo reduz a emissão de gases poluentes de duas formas: diminui diretamente o metano gerado na digestão do boi e, indiretamente, acelera o crescimento do animal, permitindo que ele seja abatido mais jovem.</p>
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="agrofloresta" class="section">
+            <h2>Agrofloresta</h2>
+            <div class="box-explicacao">
+                <p>A Agrofloresta aproveita a capacidade das árvores de armazenar carbono, retirar água e nutrientes do solo, abrigar a biodiversidade, construir matéria orgânica do solo e carbono, e registrar a história climática. Os sistemas agroflorestais combinam o cultivo de plantas agrícolas e árvores em uma mesma área.</p>
+                <p>Essa prática imita a estrutura e a dinâmica de uma floresta natural, tratando o solo contra erosões, enriquecendo o ecossistema local com nutrientes e gerando uma produção diversificada e sustentável ao produtor. Ela pode reduzir a erosão do solo em 50 por cento e aumentar o carbono do solo em 21%.</p>
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="agricultura-regenerativa" class="section">
+            <h2>Agricultura Regenerativa</h2>
+            <div class="box-explicacao">
+                <p>Mais do que apenas conservar, a agricultura regenerativa busca restaurar a saúde do meio ambiente. Ela foca no reestabelecimento biológico do solo, no aumento da biodiversidade, na otimização do ciclo da água e no sequestro de carbono ativo, criando sistemas de produção resilientes e independentes de químicos pesados.</p>
+                <p>A agricultura regenerativa vai além da sustentabilidade porque seu objetivo é recuperar os ecossistemas e a saúde do solo. Usando práticas como a rotação de culturas, a terra sempre coberta e a integração de árvores e animais, esse sistema aumenta a biodiversidade e ajuda o solo a reter mais água e nutrientes. Além disso, ela se torna uma grande aliada contra o aquecimento global, já que solos saudáveis conseguem capturar e guardar muito mais carbono da atmosfera.</p>
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="sistema-indoor" class="section">
+            <h2>Sistema Indoor</h2>
+            <div class="box-explicacao">
+                <p>O sistema indoor (ou agricultura em ambiente controlado) consiste em cultivar plantas dentro de locais fechados, como galpões, prédios ou contêineres, sem depender do solo ou do clima do lado de fora.
+Nesse modelo, tudo é controlado artificialmente por tecnologia: lâmpadas especiais de LED substituem o sol, sensores regulam a temperatura e a umidade, e as plantas recebem água e nutrientes direto nas suas raízes por meio de sistemas como a hidroponia (cultivo na água). Como as plantas costumam ser empilhadas em várias prateleiras para aproveitar o espaço vertical, o sistema também é muito conhecido como fazenda vertical.</p>
+            </div>
+        </section>
+
+        
+        <hr>
+       
+            
+        <section id="futuro-campo" class="section">
+            <h2>Qual vai ser o futuro do campo?</h2>
+            <div class="box-explicacao">
+                <p>Suas escolhas definem os rumos da nossa sobrevivência e a saúde do planeta. Você está pronto para assumir o gerenciamento de uma propriedade e testar seu impacto ambiental?</p>
+                <button class="btn-futuro" onclick="irParaDecisoes()">Descobrir Agora</button>
+            </div>
+        </section>
+    </div>
+
+    <div id="conteudo-decisoes" class="pagina-decisoes">
+        <div class="header-decisoes">
+            <img src="fazendinha.png" alt="Logo Fazendinha" class="logo-titulo">
+            <h1 class="titulo-decisoes">Suas decisões geram consequências</h1>
+        </div>
+        <p class="sub-decisoes">Escolha com sabedoria como gerenciar sua agropecuária para balancear produtividade e conservação.</p>
+
+        <div class="card-decisao" id="card-quiz"></div>
+    </div>
+
+    <script>
+        // toda vez que abrir o site ele vai voltar do inicio
+        window.addEventListener('DOMContentLoaded', () => {
+            window.scrollTo(0, 0);
+            if (history.replaceState) {
+                history.replaceState(null, null, ' ');
+            }
+        });
+
+        // Função para sumir com a imagem de fundo conforme rola a página
+        window.addEventListener('scroll', () => {
+            const bgImagem = document.getElementById('bgImagem');
+            const scrollMaximo = window.innerHeight; 
+            const scrollAtual = window.scrollY;
+
+            if (scrollAtual <= scrollMaximo) {
+                let novaOpacidade = 0.25 * (1 - (scrollAtual / scrollMaximo));
+                bgImagem.style.opacity = novaOpacidade;
+            } else {
+                bgImagem.style.opacity = 0;
+            }
+        });
+
+        // navegação para a "Segunda Página"
+        function irParaDecisoes() {
+            document.getElementById('conteudo-principal').style.display = 'none';
+            document.getElementById('bgImagem').style.opacity = '0'; 
+            const painel = document.getElementById('conteudo-decisoes');
+            painel.style.display = 'flex';
+            window.scrollTo(0, 0);
+            inicializarQuiz();
+        }
+
+        // Banco de perguntas para 7 fases 
+        const perguntas = [
+            {
+                titulo: "Fase 1: Preparo e Manejo do Solo",
+                opcoes: [
+                    { texto: "Adotar o Plantio Direto sobre a palhada e fazer rotação de culturas para nutrir o solo naturalmente.", peso: 3 }, 
+                    { texto: "Utilizar o método tradicional de aração mecânica leve, mantendo o solo limpo sem queimadas.", peso: 2 }, 
+                    { texto: "Realizar queimadas para limpar o terreno rapidamente e usar fertilizantes químicos pesados em larga escala.", peso: 1 } 
+                ]
+            },
+            {
+                titulo: "Fase 2: Irrigação e Gestão de Recursos Hídricos",
+                opcoes: [
+                    { texto: "Instalar sistemas de gotejamento automatizados integrados com cisternas de captação de água da chuva.", peso: 3 }, 
+                    { texto: "Utilizar aspersores comuns programados por horários fixos para evitar o ápice do calor do dia.", peso: 2 }, 
+                    { texto: "Desviar o leito de um rio próximo para bombear água de forma contínua e inundar os sulcos de plantio.", peso: 1 } 
+                ]
+            },
+            {
+                titulo: "Fase 3: Proteção de Cultivos e Controle de Pragas",
+                opcoes: [
+                    { texto: "Implementar o Manejo Integrado de Pragas (MIP), usando insetos benéficos protetores e bioinsumos locais.", peso: 3 }, 
+                    { texto: "Aplicar defensivos químicos tradicionais preventivos seguindo estritamente a janela do calendário.", peso: 2 }, 
+                    { texto: "Pulverizar defensivos sintéticos pesados via aérea ao menor sinal de qualquer inseto na lavoura.", peso: 1 } 
+                ]
+            },
+            {
+                titulo: "Fase 4: Tratamento de Dejetos e Resíduos Animais",
+                opcoes: [
+                    { texto: "Instalar biodigestores para tratar o esterco, gerando biogás para a propriedade e biofertilizantes de alta qualidade.", peso: 3 },
+                    { texto: "Armazenar os dejetos em esterqueiras cobertas para curar o material antes de utilizá-lo na adubação comum.", peso: 2 },
+                    { texto: "Descartar os resíduos diretamente em valas nos fundos da propriedade, deixando infiltrar perto de lençóis freáticos.", peso: 1 }
+                ]
+            },
+            {
+                titulo: "Fase 5: Matriz Energética da Propriedade",
+                opcoes: [
+                    { texto: "Cobrir os galpões com painéis solares fotovoltaicos e utilizar biocombustíveis renováveis nos maquinários.", peso: 3 },
+                    { texto: "Utilizar exclusivamente a energia elétrica da rede convencional, sem fontes alternativas ou automações de corte.", peso: 2 },
+                    { texto: "Manter geradores antigos movidos a óleo diesel operando em capacidade máxima para baratear custos operacionais.", peso: 1 }
+                ]
+            },
+            {
+                titulo: "Fase 6: Manejo de Pastagens e Pecuária",
+                opcoes: [
+                    { texto: "Adotar o sistema de Integração Lavoura-Pecuária-Floresta (ILPF) com pastejo rotacionado por piquetes.", peso: 3 },
+                    { texto: "Criar o gado de forma extensiva em pastos fixos tradicionais, aplicando calagem básica quando o capim enfraquece.", peso: 2 },
+                    { texto: "Praticar o superpastoreio, superlotando os pastos até expor a terra nua e gerar processos graves de erosão.", peso: 1 }
+                ]
+            },
+            {
+                titulo: "Fase 7: Preservação de Áreas Naturais e Matas Ciliares",
+                opcoes: [
+                    { texto: "Isolar totalmente as Áreas de Preservação Permanente (APPs) e reflorestar as margins de rios com mudas nativas.", peso: 3 },
+                    { texto: "Manter as cercas limítrofes da mata nativa existente apenas para cumprir as obrigações legais da reserva.", peso: 2 },
+                    { texto: "Avançar o plantio e o gado sobre as margens dos rios e nascentes para aproveitar o máximo de espaço produtivo.", peso: 1 }
+                ]
+            }
+        ];
+
+        let perguntaAtual = 0;
+        let pontuacaoTotal = 0;
+
+        function inicializarQuiz() {
+            perguntaAtual = 0;
+            pontuacaoTotal = 0;
+            mostrarPergunta();
+        }
+
+        function mostrarPergunta() {
+            const card = document.getElementById('card-quiz');
+            if (perguntaAtual < perguntas.length) {
+                const dados = perguntas[perguntaAtual];
+                
+                // imagem da fazendinha do lado da pergunta
+                let htmlOpcoes = `
+                    <div class="header-pergunta">
+                        <img src="fazendinha.png" alt="Logo Fazendinha" class="logo-pergunta">
+                        <h3>${dados.titulo}</h3>
+                    </div>
+                `;
+                
+                dados.opcoes.forEach((opcao) => {
+                    htmlOpcoes += `<button class="btn-opcao" onclick="computarDecisao(${opcao.peso})">${opcao.texto}</button>`;
+                });
+                
+                card.innerHTML = htmlOpcoes;
+            } else {
+                calcularResultadoFinal();
+            }
+        }
+
+        function computarDecisao(peso) {
+            pontuacaoTotal += peso;
+            perguntaAtual++;
+            mostrarPergunta();
+        }
+
+        function calcularResultadoFinal() {
+            const card = document.getElementById('card-quiz');
+            const mediaFinal = pontuacaoTotal / perguntas.length;
+            let vereditoHTML = `<h3>Resultado do seu Gerenciamento:</h3>`;
+
+            if (mediaFinal >= 2.6) {
+                vereditoHTML += `
+                    <div class="resultado-texto excelente">Excelente no cuidado com o meio ambiente!</div>
+                    <p style="margin-top:15px; font-size:1.1rem;">Parabéns! Suas decisões transformaram sua fazenda em um modelo global de sustentabilidade. Você conseguiu reter carbono, otimizar recursos e produzir alimentos mantendo a harmonia com a natureza.</p>
+                `;
+            } else if (mediaFinal >= 1.6) {
+                vereditoHTML += `
+                    <div class="resultado-texto media">Média no cuidado...</div>
+                    <p style="margin-top:15px; font-size:1.1rem;">Você evitou catástrofes extremas, mas suas técnicas ainda dependem muito de métodos convencionais que desgastam o ecossistema a longo prazo. Vale a pena balancear com práticas mais regenerativas!</p>
+                `;
+            } else {
+                vereditoHTML += `
+                    <div class="resultado-texto ruim">Você acabou com o planeta...</div>
+                    <p style="margin-top:15px; font-size:1.1rem;">Infelizmente, a busca pelo lucro imediato devastou os recursos naturais locais. O solo ficou infértil, os rios secaram e a alta emissão de gases acelerou a degradação ambiental da região.</p>
+                `;
+            }
+
+            vereditoHTML += `<button class="btn-reiniciar" onclick="reiniciarTudo()">Tentar Novamente</button>`;
+            card.innerHTML = vereditoHTML;
+        }
+
+        function reiniciarTudo() {
+            document.getElementById('conteudo-decisoes').style.display = 'none';
+            document.getElementById('conteudo-principal').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+    </script>
 </body>
 </html>
-
-  
