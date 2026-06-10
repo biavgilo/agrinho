@@ -201,7 +201,7 @@
         }
 
         .logo-pergunta {
-            height: 50px; /* tamanho da logo do lado da fase do quiz */
+            height: 350px; /* tamanho da logo do lado da fase do quiz */
             width: auto;
             object-fit: contain;
         }
@@ -231,7 +231,7 @@
             color: #333;
         }
 
-        /* Botões de Opção do Quiz em Tons Verdes */
+        /* Botões de Opção do Quiz  */
         .btn-opcao {
             display: block;
             width: 100%;
@@ -329,7 +329,7 @@
 
         <hr>
 
-        <section id="plano-abc" class="section">
+        <section id="plano-abc" class="section"> 
             <h2>Plano ABC</h2>
             <div class="box-explicacao">
                 <p>O Plano de Agricultura de Baixa Emissão de Carbono é uma estratégia do Governo Federal Brasileiro, criado em 2010, com o intuito de promover a redução da emissão de gases de efeito estufa na agropecuária, usar a natureza de forma mais inteligente e criar uma produção mais resistente, preparando o setor para enfrentar as mudanças no clima.</p>
@@ -410,7 +410,7 @@ Nesse modelo, tudo é controlado artificialmente por tecnologia: lâmpadas espec
     </div>
 
     <script>
-        // Força a página a inicializar no topo da Home ao carregar ou atualizar
+        // toda vez que abrir o site ele vai voltar do inicio
         window.addEventListener('DOMContentLoaded', () => {
             window.scrollTo(0, 0);
             if (history.replaceState) {
@@ -432,7 +432,7 @@ Nesse modelo, tudo é controlado artificialmente por tecnologia: lâmpadas espec
             }
         });
 
-        // Lógica de navegação para a "Segunda Página"
+        // navegação para a "Segunda Página"
         function irParaDecisoes() {
             document.getElementById('conteudo-principal').style.display = 'none';
             document.getElementById('bgImagem').style.opacity = '0'; 
@@ -442,7 +442,7 @@ Nesse modelo, tudo é controlado artificialmente por tecnologia: lâmpadas espec
             inicializarQuiz();
         }
 
-        // Banco de perguntas expandido para 7 fases completas
+        // Banco de perguntas para 7 fases 
         const perguntas = [
             {
                 titulo: "Fase 1: Preparo e Manejo do Solo",
@@ -516,7 +516,7 @@ Nesse modelo, tudo é controlado artificialmente por tecnologia: lâmpadas espec
             if (perguntaAtual < perguntas.length) {
                 const dados = perguntas[perguntaAtual];
                 
-                // Estrutura HTML alterada para agrupar a imagem "fazendinha.png" e o título lado a lado
+                // imagem da fazendinha do lado da pergunta
                 let htmlOpcoes = `
                     <div class="header-pergunta">
                         <img src="fazendinha.png" alt="Logo Fazendinha" class="logo-pergunta">
