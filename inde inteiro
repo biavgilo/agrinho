@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Futuro Rural</title>
     <style>
-        /* Variáveis de Tema (Modo Claro por Padrão) */
+        /* variaveis modo claro padrão */
         :root {
             --bg-body: #E8F9ED;
             --text-main: #1a1a1a;
@@ -24,7 +24,7 @@
             --progress-bar: #0fd65b;
         }
 
-        /* Variáveis para o Modo Escuro */
+        /* variaveis para alteral para o modo escuro */
         [data-theme="dark"] {
             --bg-body: #0B1A10;
             --text-main: #E0E0E0;
@@ -43,7 +43,7 @@
             --progress-bar: #52E085;
         }
 
-        /* Configurações Globais */
+        /* configurações gerais */
         * {
             margin: 0;
             padding: 0;
@@ -63,7 +63,7 @@
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        /* Imagem de Fundo Fixa */
+        /* imagem de fundo abc */
         .bg-imagem-fixa {
             position: fixed;
             top: 0;
@@ -79,7 +79,23 @@
             transition: opacity 0.1s linear;
         }
 
-        /* Barra de Navegação */
+        /* fundo da página do Quiz */
+.bg-imagem-quiz {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: url('farmvertical.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.25;
+    z-index: -1;
+    display: none;
+}
+
+        /* barra de navegação */
         .navbar {
             position: fixed;
             top: 0;
@@ -95,10 +111,10 @@
             flex-wrap: wrap;
         }
 
-        /* Indicador de Progresso de Leitura */
+        /* indica o progresso de leitura do usuario */
         .progress-container {
             position: fixed;
-            top: 66px; /* Logo abaixo da navbar */
+            top: 66px; /* embaixo da barra de navegaçao */
             width: 100%;
             height: 4px;
             background: transparent;
@@ -112,7 +128,7 @@
             transition: width 0.1s ease;
         }
 
-        /* Botões da Navbar */
+        /* botoes da barra de navegacao */
         .nav-btn {
             background-color: var(--btn-nav-bg);
             color: var(--btn-nav-text); 
@@ -134,7 +150,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
         }
 
-        /* Botão de Alternar Tema */
+        /* botao modo escuro */
         .theme-toggle {
             background-color: transparent;
             border: 2px solid var(--btn-nav-bg);
@@ -154,10 +170,10 @@
             color: var(--btn-nav-text);
         }
 
-        /* Seções de Conteúdo Ajustadas para Continuidade */
+        /* continuidade do site, não parece que o site acabou */
         .section {
-            padding: 140px 20px 100px 20px; /* Mais respiro vertical */
-            min-height: 85vh; /* Diminuído para que a próxima seção apareça sutilmente no fundo */
+            padding: 140px 20px 100px 20px; 
+            min-height: 85vh; /* o proximo topico aparece no final da tela indicando qeu ainda tem mais site */
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -176,7 +192,7 @@
             color: var(--title-color);
         }
 
-        /* Contornos das caixas de texto */
+        /* contornos das caixas de texto */
         .box-explicacao {
             background-color: var(--box-bg); 
             color: var(--box-text); 
@@ -199,7 +215,7 @@
             margin-bottom: 0;
         }
 
-        /* Seta Indicativa de Rolagem (Scroll Down) */
+        /* seta que indica para rolar para baixo */
         .scroll-indicator {
             margin-top: 30px;
             color: var(--title-color);
@@ -263,7 +279,7 @@
             box-shadow: 0 8px 25px rgba(12, 181, 76, 0.5);
         }
 
-        /* Input de Nome Personalizado */
+        /* guarda seu nome */
         .input-nome {
             width: 100%;
             max-width: 400px;
@@ -408,7 +424,7 @@
             background-color: #08421D;
         }
 
-        /* Animações */
+        /* animações */
         @keyframes fadeInDown {
             from { opacity: 0; transform: translateY(-30px); }
             to { opacity: 1; transform: translateY(0); }
@@ -424,7 +440,7 @@
             50% { transform: translateY(6px); }
         }
 
-        /* Linha divisória mais suave */
+        /* divisória suave */
         hr {
             border: 0;
             height: 1px;
@@ -438,8 +454,9 @@
 <body>
 
     <div class="bg-imagem-fixa" id="bgImagem"></div>
+    <div class="bg-imagem-quiz" id="bgImagemQuiz"></div>
 
-    <!-- Barra de Progresso Fina no Topo -->
+    <!-- barrinha de progresso de leitura  -->
     <div class="progress-container" id="containerProgresso">
         <div class="progress-bar" id="barraProgresso"></div>
     </div>
@@ -570,7 +587,7 @@ Nesse modelo, tudo é controlado artificialmente por tecnologia: lâmpadas espec
     <script>
         let nomeUsuario = "";
 
-        // Função para alternar entre Tema Claro e Escuro
+        // função para alternar entre claro e escuro
         function alternarTema() {
             const body = document.documentElement;
             const btnTema = document.getElementById('btnTema');
@@ -584,9 +601,9 @@ Nesse modelo, tudo é controlado artificialmente por tecnologia: lâmpadas espec
             }
         }
 
-        // Evento que gerencia a rolagem da página (Imagem fixa + Barra de Progresso)
+        // conforme rola para baixo a imagem some
         window.addEventListener('scroll', () => {
-            // 1. Efeito da Imagem de Fundo
+            // imagem de Fundo
             const bgImagem = document.getElementById('bgImagem');
             const scrollMaximo = window.innerHeight; 
             const scrollAtual = window.scrollY;
@@ -598,7 +615,7 @@ Nesse modelo, tudo é controlado artificialmente por tecnologia: lâmpadas espec
                 bgImagem.style.opacity = 0;
             }
 
-            // 2. Efeito da Barra de Progresso de Leitura
+            //barra progresso de leitura
             const totalScrollavel = document.documentElement.scrollHeight - window.innerHeight;
             if (totalScrollavel > 0) {
                 const percentual = (scrollAtual / totalScrollavel) * 100;
@@ -606,7 +623,7 @@ Nesse modelo, tudo é controlado artificialmente por tecnologia: lâmpadas espec
             }
         });
 
-        // Garantir que volta ao topo no recarregamento
+        // volta pro inicio quando recarrega o site
         window.addEventListener('DOMContentLoaded', () => {
             window.scrollTo(0, 0);
             if (history.replaceState) {
@@ -614,7 +631,7 @@ Nesse modelo, tudo é controlado artificialmente por tecnologia: lâmpadas espec
             }
         });
 
-        // Tela intermediária pedindo o nome
+        // tela pedindo o nome
         function solicitarNome() {
             const box = document.getElementById('box-inicio-quiz');
             box.innerHTML = `
@@ -637,18 +654,19 @@ Nesse modelo, tudo é controlado artificialmente por tecnologia: lâmpadas espec
             irParaDecisoes();
         }
 
-        // Navegação para a segunda página (oculta barra de progresso)
+        // navegação para a segunda página (oculta barra de progresso)
         function irParaDecisoes() {
             document.getElementById('containerProgresso').style.display = 'none';
             document.getElementById('conteudo-principal').style.display = 'none';
-            document.getElementById('bgImagem').style.opacity = '0'; 
+            document.getElementById('bgImagem').style.display = 'none';
+            document.getElementById('bgImagemQuiz').style.display = 'block';
             const painel = document.getElementById('conteudo-decisoes');
             painel.style.display = 'flex';
             window.scrollTo(0, 0);
             inicializarQuiz();
         }
 
-        // Banco de perguntas para 7 fases
+        // perguntas para 7 fases
         const perguntas = [
             {
                 titulo: "Fase 1: Preparo e Manejo do Solo",
