@@ -21,6 +21,7 @@
             --border-hr: rgba(0, 0, 0, 0.08);
             --quiz-btn-bg: #F0FBF2;
             --quiz-btn-border: #C3EFCF;
+            --progress-bar: #0fd65b;
         }
 
         /* Variáveis para o Modo Escuro */
@@ -39,9 +40,10 @@
             --border-hr: rgba(255, 255, 255, 0.1);
             --quiz-btn-bg: #1A3A26;
             --quiz-btn-border: #2C613F;
+            --progress-bar: #52E085;
         }
 
-        /* Rolagem Suave */
+        /* Configurações Globais */
         * {
             margin: 0;
             padding: 0;
@@ -61,7 +63,7 @@
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        /* Imagem de Fundo Fixa  */
+        /* Imagem de Fundo Fixa */
         .bg-imagem-fixa {
             position: fixed;
             top: 0;
@@ -72,7 +74,7 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            opacity: 0.25; /* Opacidade menor para ajustar com o fundo verde */
+            opacity: 0.25;
             z-index: -1;
             transition: opacity 0.1s linear;
         }
@@ -91,6 +93,23 @@
             align-items: center;
             gap: 15px;
             flex-wrap: wrap;
+        }
+
+        /* Indicador de Progresso de Leitura */
+        .progress-container {
+            position: fixed;
+            top: 66px; /* Logo abaixo da navbar */
+            width: 100%;
+            height: 4px;
+            background: transparent;
+            z-index: 1001;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--progress-bar);
+            width: 0%;
+            transition: width 0.1s ease;
         }
 
         /* Botões da Navbar */
@@ -135,10 +154,10 @@
             color: var(--btn-nav-text);
         }
 
-        /* Seções de Conteúdo */
+        /* Seções de Conteúdo Ajustadas para Continuidade */
         .section {
-            padding: 120px 20px 60px 20px; 
-            min-height: 100vh;
+            padding: 140px 20px 100px 20px; /* Mais respiro vertical */
+            min-height: 85vh; /* Diminuído para que a próxima seção apareça sutilmente no fundo */
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -146,6 +165,7 @@
             text-align: center;
             max-width: 900px;
             margin: 0 auto;
+            position: relative;
         }
 
         .section h2 {
@@ -179,6 +199,32 @@
             margin-bottom: 0;
         }
 
+        /* Seta Indicativa de Rolagem (Scroll Down) */
+        .scroll-indicator {
+            margin-top: 30px;
+            color: var(--title-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .scroll-indicator:hover {
+            opacity: 1;
+        }
+
+        .scroll-indicator .seta {
+            font-size: 1.5rem;
+            animation: balancoSeta 1.5s infinite ease-in-out;
+        }
+
         /* seção inicio */
         .hero-title {
             font-size: 2.5rem;
@@ -194,7 +240,7 @@
             animation: fadeInUp 1.5s ease-out forwards;
         }
 
-        /* botão */
+        /* botões principais */
         .btn-futuro {
             background-color: #0fd65b; 
             color: #08421D;
@@ -260,7 +306,6 @@
             transition: background-color 0.3s ease, box-shadow 0.3s ease;
         }
 
-        /*alinhar a logo e a pergunta  */
         .header-pergunta {
             display: flex;
             align-items: center;
@@ -269,7 +314,6 @@
             margin-bottom: 20px;
         }
 
-        /* alinhar a logo e o título principal da segunda página */
         .header-decisoes {
             display: flex;
             align-items: center;
@@ -280,13 +324,13 @@
         }
 
         .logo-pergunta {
-            height: 50px; /* tamanho da logo do lado da fase do quiz */
+            height: 50px;
             width: auto;
             object-fit: contain;
         }
 
         .logo-titulo {
-            height: 280px; /* Tamanho da logo ao lado do título principal */
+            height: 280px;
             width: auto;
             object-fit: contain;
         }
@@ -310,7 +354,7 @@
             color: var(--text-main);
         }
 
-        /* Botões de Opção do Quiz  */
+        /* Botões de Opção do Quiz */
         .btn-opcao {
             display: block;
             width: 100%;
@@ -333,7 +377,7 @@
             transform: translateX(5px);
         }
 
-        /* Resposta final do quiz*/
+        /* Resposta final */
         .resultado-texto {
             font-size: 1.6rem;
             font-weight: bold;
@@ -342,7 +386,6 @@
             border-radius: 10px;
         }
         
-        /* Resultado do quiz */
         .excelente { color: #0A5C24; background-color: #C3EFCF; border: 2px solid #0fd65b; }
         .media { color: #E65100; background-color: #FFF3E0; border: 2px solid #FFB74D; }
         .ruim { color: #B71C1C; background-color: #FFEBEE; border: 2px solid #EF5350; }
@@ -361,12 +404,11 @@
             transition: background 0.2s;
         }
 
-        /*botão para voltar no inicio da explicação*/
         .btn-reiniciar:hover {
             background-color: #08421D;
         }
 
-        /* animações */
+        /* Animações */
         @keyframes fadeInDown {
             from { opacity: 0; transform: translateY(-30px); }
             to { opacity: 1; transform: translateY(0); }
@@ -377,12 +419,17 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Linha divisória */
+        @keyframes balancoSeta {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(6px); }
+        }
+
+        /* Linha divisória mais suave */
         hr {
             border: 0;
             height: 1px;
             background: var(--border-hr);
-            width: 80%;
+            width: 85%;
             margin: 0 auto;
             transition: background 0.3s ease;
         }
@@ -391,6 +438,11 @@
 <body>
 
     <div class="bg-imagem-fixa" id="bgImagem"></div>
+
+    <!-- Barra de Progresso Fina no Topo -->
+    <div class="progress-container" id="containerProgresso">
+        <div class="progress-bar" id="barraProgresso"></div>
+    </div>
 
     <div id="conteudo-principal">
         <nav class="navbar">
@@ -406,6 +458,11 @@
         <section id="inicio" class="section">
             <h1 class="hero-title">Como faremos o campo produzir sem destruir o amanhã?</h1>
             <p class="hero-subtitle">Seja bem-vindo ao portal do <b>Futuro Rural</b>. Descubra como a tecnologia, o manejo consciente e o respeito à biodiversidade influenciam a produção de alimentos no Brasil e no mundo.</p>
+            
+            <a href="#plano-abc" class="scroll-indicator">
+                <span>Explorar Conteúdo</span>
+                <span class="seta">↓</span>
+            </a>
         </section>
 
         <hr>
@@ -416,7 +473,7 @@
                 <p>O Plano de Agricultura de Baixa Emissão de Carbono é uma estratégia do Governo Federal Brasileiro, criado em 2010, com o intuito de promover a redução da emissão de gases de efeito estufa na agropecuária, usar a natureza de forma mais inteligente e criar uma produção mais resistente, preparando o setor para enfrentar as mudanças no clima.</p>
             </div>
 
-            <hr>
+            <hr style="width: 50%; margin: 20px auto;">
             
             <h3> Suas Tecnologias</h3>
             
@@ -424,17 +481,22 @@
                 <p><b> Sistema Integrado: </b> Esses sistemas reúnem diferentes atividades — como agricultura, pecuária e silvicultura — em uma mesma área para trabalharem em conjunto. Considerados os modelos mais sustentáveis para a produção de alimentos, fibras e energia, eles variam em complexidade. No plano ABC+, o foco está em duas modalidades: os Sistemas de Integração Lavoura-Pecuária-Floresta (ILPF) e os Sistemas Agroflorestais (SAF).</p>
             </div>
 
-            <hr>
+            <hr style="width: 50%; margin: 20px auto;">
             
             <div class="box-explicacao">
                 <p><b> Bioinsumos: </b> O uso de produtos biológicos na agricultura melhora a produção e ajuda a proteger o meio ambiente, sendo que os inoculantes (insumos biológicos compostos por microrganismos vivos, como bactérias e fungos) são muito usados no Brasil. Antes, o Plano ABC focava apenas na Fixação Biológica de Nitrogênio (FBN). Agora, na fase ABC+, o programa aumentou esse incentivo: além da FBN, ele também apoia outros microrganismos que ajudam as plantas a crescer e a aproveitar melhor os nutrientes, além do uso de defensores naturais para o controle de pragas.</p>
             </div>
 
-            <hr>
+            <hr style="width: 50%; margin: 20px auto;">
             
             <div class="box-explicacao">
                 <p><b>Terminação Intensiva: </b> Essa técnica melhora a alimentação dos bois na fase final de criação através do confinamento ou do uso de ração no pasto. Para isso, os animais recebem alimentos mais ricos em energia, como grãos e farelos. Esse processo reduz a emissão de gases poluentes de duas formas: diminui diretamente o metano gerado na digestão do boi e, indiretamente, acelera o crescimento do animal, permitindo que ele seja abatido mais jovem.</p>
             </div>
+
+            <a href="#agrofloresta" class="scroll-indicator">
+                <span>Agrofloresta</span>
+                <span class="seta">↓</span>
+            </a>
         </section>
 
         <hr>
@@ -445,6 +507,11 @@
                 <p>A Agrofloresta aproveita a capacidade das árvores de armazenar carbono, retirar água e nutrientes do solo, abrigar a biodiversidade, construir matéria orgânica do solo e carbono, e registrar a história climática. Os sistemas agroflorestais combinam o cultivo de plantas agrícolas e árvores em uma mesma área.</p>
                 <p>Essa prática imita a estrutura e a dinâmica de uma floresta natural, tratando o solo contra erosões, enriquecendo o ecossistema local com nutrientes e gerando uma produção diversificada e sustentável ao produtor. Ela pode reduzir a erosão do solo em 50 por cento e aumentar o carbono do solo em 21%.</p>
             </div>
+
+            <a href="#agricultura-regenerativa" class="scroll-indicator">
+                <span>Agricultura Regenerativa</span>
+                <span class="seta">↓</span>
+            </a>
         </section>
 
         <hr>
@@ -455,6 +522,11 @@
                 <p>Mais do que apenas conservar, a agricultura regenerativa busca restaurar a saúde do meio ambiente. Ela foca no reestabelecimento biológico do solo, no aumento da biodiversidade, na otimização do ciclo da água e no sequestro de carbono ativo, criando sistemas de produção resilientes e independentes de químicos pesados.</p>
                 <p>A agricultura regenerativa vai além da sustentabilidade porque seu objetivo é recuperar os ecossistemas e a saúde do solo. Usando práticas como a rotação de culturas, a terra sempre coberta e a integração de árvores e animais, esse sistema aumenta a biodiversidade e ajuda o solo a reter mais água e nutrientes. Além disso, ela se torna uma grande aliada contra o aquecimento global, já que solos saudáveis conseguem capturar e guardar muito mais carbono da atmosfera.</p>
             </div>
+
+            <a href="#sistema-indoor" class="scroll-indicator">
+                <span>Sistema Indoor</span>
+                <span class="seta">↓</span>
+            </a>
         </section>
 
         <hr>
@@ -463,8 +535,13 @@
             <h2>Sistema Indoor</h2>
             <div class="box-explicacao">
                 <p>O sistema indoor (ou agricultura em ambiente controlado) consiste em cultivar plantas dentro de locais fechados, como galpões, prédios ou contêineres, sem depender do solo ou do clima do lado de fora.
-Nesse modelo, tudo é controlado artificialmente por tecnologia: lâmpadas especiais de LED substituem o sol, sensores regulam a temperatura e a umidade, e as plantas recebem água e nutrientes direto nas suas raízes por meio de sistemas como a hidroponia (cultivo na água). Como as plantas costumam ser empilhadas em várias prateleiras para aproveitar o espaço vertical, o sistema também é muito conhecido como fazenda vertical.</p>
+Nesse modelo, tudo é controlado artificialmente por tecnologia: lâmpadas especiais de LED substituem o sol, sensores regulam a temperatura e a umidade, e as plantas recebem água e nutrientes direto nas suas raíces por meio de sistemas como a hidroponia (cultivo na água). Como as plantas costumam ser empilhadas em várias prateleiras para aproveitar o espaço vertical, o sistema também é muito conhecido como fazenda vertical.</p>
             </div>
+
+            <a href="#futuro-campo" class="scroll-indicator">
+                <span>Desafio Final</span>
+                <span class="seta">↓</span>
+            </a>
         </section>
 
         
@@ -507,16 +584,9 @@ Nesse modelo, tudo é controlado artificialmente por tecnologia: lâmpadas espec
             }
         }
 
-        // toda vez que abrir o site ele vai voltar do inicio
-        window.addEventListener('DOMContentLoaded', () => {
-            window.scrollTo(0, 0);
-            if (history.replaceState) {
-                history.replaceState(null, null, ' ');
-            }
-        });
-
-        // Função para sumir com a imagem de fundo conforme rola a página
+        // Evento que gerencia a rolagem da página (Imagem fixa + Barra de Progresso)
         window.addEventListener('scroll', () => {
+            // 1. Efeito da Imagem de Fundo
             const bgImagem = document.getElementById('bgImagem');
             const scrollMaximo = window.innerHeight; 
             const scrollAtual = window.scrollY;
@@ -527,9 +597,24 @@ Nesse modelo, tudo é controlado artificialmente por tecnologia: lâmpadas espec
             } else {
                 bgImagem.style.opacity = 0;
             }
+
+            // 2. Efeito da Barra de Progresso de Leitura
+            const totalScrollavel = document.documentElement.scrollHeight - window.innerHeight;
+            if (totalScrollavel > 0) {
+                const percentual = (scrollAtual / totalScrollavel) * 100;
+                document.getElementById('barraProgresso').style.width = percentual + '%';
+            }
         });
 
-        // Tela intermediária pedindo o nome antes de mudar de página
+        // Garantir que volta ao topo no recarregamento
+        window.addEventListener('DOMContentLoaded', () => {
+            window.scrollTo(0, 0);
+            if (history.replaceState) {
+                history.replaceState(null, null, ' ');
+            }
+        });
+
+        // Tela intermediária pedindo o nome
         function solicitarNome() {
             const box = document.getElementById('box-inicio-quiz');
             box.innerHTML = `
@@ -552,8 +637,9 @@ Nesse modelo, tudo é controlado artificialmente por tecnologia: lâmpadas espec
             irParaDecisoes();
         }
 
-        // navegação para a "Segunda Página"
+        // Navegação para a segunda página (oculta barra de progresso)
         function irParaDecisoes() {
+            document.getElementById('containerProgresso').style.display = 'none';
             document.getElementById('conteudo-principal').style.display = 'none';
             document.getElementById('bgImagem').style.opacity = '0'; 
             const painel = document.getElementById('conteudo-decisoes');
@@ -562,7 +648,7 @@ Nesse modelo, tudo é controlado artificialmente por tecnologia: lâmpadas espec
             inicializarQuiz();
         }
 
-        // Banco de perguntas para 7 fases 
+        // Banco de perguntas para 7 fases
         const perguntas = [
             {
                 titulo: "Fase 1: Preparo e Manejo do Solo",
@@ -636,7 +722,6 @@ Nesse modelo, tudo é controlado artificialmente por tecnologia: lâmpadas espec
             if (perguntaAtual < perguntas.length) {
                 const dados = perguntas[perguntaAtual];
                 
-                // imagem da fazendinha do lado da pergunta
                 let htmlOpcoes = `
                     <div class="header-pergunta">
                         <img src="fazendinha.png" alt="Logo Fazendinha" class="logo-pergunta">
@@ -687,13 +772,13 @@ Nesse modelo, tudo é controlado artificialmente por tecnologia: lâmpadas espec
         }
 
         function reiniciarTudo() {
-            // Restaura a caixa de chamada do quiz original
             const box = document.getElementById('box-inicio-quiz');
             box.innerHTML = `
                 <p>Suas escolhas definem os rumos da nossa sobrevivência e a saúde do planeta. Você está pronto para assumir o gerenciamento de uma propriedade e testar seu impacto ambiental?</p>
                 <button class="btn-futuro" onclick="solicitarNome()">Descobrir Agora</button>
             `;
 
+            document.getElementById('containerProgresso').style.display = 'block';
             document.getElementById('conteudo-decisoes').style.display = 'none';
             document.getElementById('conteudo-principal').style.display = 'block';
             window.scrollTo(0, 0);
