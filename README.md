@@ -2,9 +2,13 @@
 
 <h1> Objetivo </h1>
 <p>
-  Apresentar a funcionalidade do sistema indoor e a sua integração com o plano ABC (Agricultura de Baixo Carbono)
+  Apresentar as inovações na agropecuária para a diminuição de impactos no meio ambiente
 </p>
 
+<h1> Justificativa </h1>
+<p>
+  Há muitas novas tecnologias para conseguirmos produzir mas sem agredir ou prejudicar o meio ambiente, porém, várias pessoas não procuram saber sobre esse tipo de assunto. Portanto, o site foi desenvolvido para a propagação dessas informações e para melhor entendimento pessoal
+</p>
 <h2> Refêrencias Bibliográficas </h2>
 <p>
   https://htmlcolorcodes.com/
