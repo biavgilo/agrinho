@@ -1,4 +1,4 @@
- <script>
+
         let nomeUsuario = "";
 
         // função para alternar entre claro e escuro
@@ -215,4 +215,3 @@
             document.getElementById('conteudo-principal').style.display = 'block';
             window.scrollTo(0, 0);
         }
-    </script>
