@@ -115,7 +115,7 @@
 
         /* Seção Home */
         .hero-title {
-            font-size: 3.5rem;
+            font-size: 2.5rem;
             color: #08421D;
             margin-bottom: 20px;
             animation: fadeInDown 1.2s ease-out forwards;
@@ -173,10 +173,26 @@
             margin-top: 30px;
         }
 
+        /* Container criado para alinhar a logo e a pergunta lado a lado */
+        .header-pergunta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .logo-pergunta {
+            height: 50px; /* Altere este valor se quiser a logo maior ou menor */
+            width: auto;
+            object-fit: contain;
+        }
+
         .card-decisao h3 {
             color: #08421D;
             font-size: 1.6rem;
-            margin-bottom: 20px;
+            margin-bottom: 0; /* Zerado pois o espaçamento agora fica no container */
+            text-align: left;
         }
 
         .titulo-decisoes {
@@ -313,7 +329,7 @@
         <section id="agrofloresta" class="section">
             <h2>Agrofloresta</h2>
             <p class="box-explicacao">A Agrofloresta aproveita a capacidade das árvores de armazenar carbono, retirar água e nutrientes do solo, abrigar a biodiversidade, construir matéria orgânica do solo e carbono, e registrar a história climática. Os sistemas agroflorestais combinam o cultivo de plantas agrícolas e árvores em uma mesma área.</p>
-            <p>Essa prática imita a estrutura e a dinâmica de uma floresta natural, protegendo o solo contra erosões, enriquecendo o ecossistema local com nutrientes e gerando uma produção diversificada e sustentável ao produtor. Ela pode reduzir a erosão do solo em 50 por cento e aumentar o carbono do solo em 21%</p>
+            <p>Essa prática imita a estrutura e a dinâmica de uma floresta natural, tratando o solo contra erosões, enriquecendo o ecossistema local com nutrientes e gerando uma produção diversificada e sustentável ao produtor. Ela pode reduzir a erosão do solo em 50 por cento e aumentar o carbono do solo em 21%</p>
         </section>
 
         <hr>
@@ -458,7 +474,14 @@ Nesse modelo, tudo é controlado artificialmente por tecnologia: lâmpadas espec
             const card = document.getElementById('card-quiz');
             if (perguntaAtual < perguntas.length) {
                 const dados = perguntas[perguntaAtual];
-                let htmlOpcoes = `<h3>${dados.titulo}</h3>`;
+                
+                // Estrutura HTML alterada para agrupar a imagem "fazendinha.png" e o título lado a lado
+                let htmlOpcoes = `
+                    <div class="header-pergunta">
+                        <img src="fazendinha.png" alt="Logo Fazendinha" class="logo-pergunta">
+                        <h3>${dados.titulo}</h3>
+                    </div>
+                `;
                 
                 dados.opcoes.forEach((opcao) => {
                     htmlOpcoes += `<button class="btn-opcao" onclick="computarDecisao(${opcao.peso})">${opcao.texto}</button>`;
