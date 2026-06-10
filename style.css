@@ -1,4 +1,4 @@
- <style>
+
         /* variaveis modo claro padrão */
         :root {
             --bg-body: #E8F9ED;
@@ -444,4 +444,4 @@
             margin: 0 auto;
             transition: background 0.3s ease;
         }
-    </style>
+   
