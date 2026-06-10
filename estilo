@@ -1,5 +1,43 @@
-<style>
-        /* Rolagem Suave */
+ <style>
+        /* variaveis modo claro padrão */
+        :root {
+            --bg-body: #E8F9ED;
+            --text-main: #1a1a1a;
+            --bg-navbar: #0A7835;
+            --btn-nav-bg: #FFFFFF;
+            --btn-nav-text: #0A7835;
+            --btn-nav-hover-bg: #76E597;
+            --btn-nav-hover-text: #08421D;
+            --title-color: #08421D;
+            --box-bg: #FFFFFF;
+            --box-text: #000000;
+            --box-shadow: rgba(0, 0, 0, 0.08);
+            --border-hr: rgba(0, 0, 0, 0.08);
+            --quiz-btn-bg: #F0FBF2;
+            --quiz-btn-border: #C3EFCF;
+            --progress-bar: #0fd65b;
+        }
+
+        /* variaveis para alteral para o modo escuro */
+        [data-theme="dark"] {
+            --bg-body: #0B1A10;
+            --text-main: #E0E0E0;
+            --bg-navbar: #053D1A;
+            --btn-nav-bg: #132A1C;
+            --btn-nav-text: #76E597;
+            --btn-nav-hover-bg: #76E597;
+            --btn-nav-hover-text: #08421D;
+            --title-color: #52E085;
+            --box-bg: #132A1C;
+            --box-text: #E0E0E0;
+            --box-shadow: rgba(0, 0, 0, 0.4);
+            --border-hr: rgba(255, 255, 255, 0.1);
+            --quiz-btn-bg: #1A3A26;
+            --quiz-btn-border: #2C613F;
+            --progress-bar: #52E085;
+        }
+
+        /* configurações gerais */
         * {
             margin: 0;
             padding: 0;
@@ -12,13 +50,14 @@
         }
 
         body {
-            background-color: #E8F9ED; /* Fundo VERDE clarinho */
-            color: #1a1a1a; 
+            background-color: var(--bg-body);
+            color: var(--text-main); 
             line-height: 1.6;
             position: relative;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        /* Imagem de Fundo Fixa  */
+        /* imagem de fundo abc */
         .bg-imagem-fixa {
             position: fixed;
             top: 0;
@@ -29,30 +68,64 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            opacity: 0.25; /* Opacidade menor para ajustar com o fundo verde */
+            opacity: 0.25;
             z-index: -1;
             transition: opacity 0.1s linear;
         }
 
-        /* Barra de Navegação */
+        /* fundo da página do Quiz */
+.bg-imagem-quiz {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: url('farmvertical.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.25;
+    z-index: -1;
+    display: none;
+}
+
+        /* barra de navegação */
         .navbar {
             position: fixed;
             top: 0;
             width: 100%;
-            background-color: #0A7835; /* Tom de VERDE escuroo */
-            padding: 15px 0;
+            background-color: var(--bg-navbar);
+            padding: 15px 20px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             z-index: 1000;
             display: flex;
             justify-content: center;
+            align-items: center;
             gap: 15px;
             flex-wrap: wrap;
         }
 
-        /* Botões Brancos */
+        /* indica o progresso de leitura do usuario */
+        .progress-container {
+            position: fixed;
+            top: 66px; /* embaixo da barra de navegaçao */
+            width: 100%;
+            height: 4px;
+            background: transparent;
+            z-index: 1001;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--progress-bar);
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+
+        /* botoes da barra de navegacao */
         .nav-btn {
-            background-color: #FFFFFF;
-            color: #0A7835; 
+            background-color: var(--btn-nav-bg);
+            color: var(--btn-nav-text); 
             border: none;
             padding: 10px 20px;
             font-size: 14px;
@@ -62,20 +135,40 @@
             cursor: pointer;
             text-decoration: none; 
             transition: all 0.3s ease;
+            display: flex;
         }
 
-        /* Efeito adaptado para Verde */
         .nav-btn:hover {
-            background-color: #76E597;
-            color: #08421D;
+            background-color: var(--btn-nav-hover-bg);
+            color: var(--btn-nav-hover-text);
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
         }
 
-        /* Seções de Conteúdo */
+        /* botao modo escuro */
+        .theme-toggle {
+            background-color: transparent;
+            border: 2px solid var(--btn-nav-bg);
+            color: var(--btn-nav-bg);
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 13px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            margin-left: 10px;
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--btn-nav-bg);
+            color: var(--btn-nav-text);
+        }
+
+        /* continuidade do site, não parece que o site acabou */
         .section {
-            padding: 120px 20px 60px 20px; 
-            min-height: 100vh;
+            padding: 140px 20px 100px 20px; 
+            min-height: 85vh; /* o proximo topico aparece no final da tela indicando qeu ainda tem mais site */
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -83,6 +176,7 @@
             text-align: center;
             max-width: 900px;
             margin: 0 auto;
+            position: relative;
         }
 
         .section h2 {
@@ -90,21 +184,22 @@
             margin-bottom: 25px;
             border-bottom: 3px solid #0fd65b; 
             padding-bottom: 10px;
-            color: #08421D; /* Verde muito intenso */
+            color: var(--title-color);
         }
 
-        /* Contornos das caixas de texto */
+        /* contornos das caixas de texto */
         .box-explicacao {
-            background-color: #FFFFFF; 
-            color: #000000; 
+            background-color: var(--box-bg); 
+            color: var(--box-text); 
             font-size: 1.3rem;
             max-width: 750px;
             width: 100%;
             padding: 35px; 
             border-radius: 15px; 
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08); 
+            box-shadow: 0 6px 18px var(--box-shadow); 
             text-align: center;
             margin: 20px;
+            transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
         }
 
         .box-explicacao p {
@@ -115,10 +210,36 @@
             margin-bottom: 0;
         }
 
-        /* Seção Home */
+        /* seta que indica para rolar para baixo */
+        .scroll-indicator {
+            margin-top: 30px;
+            color: var(--title-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .scroll-indicator:hover {
+            opacity: 1;
+        }
+
+        .scroll-indicator .seta {
+            font-size: 1.5rem;
+            animation: balancoSeta 1.5s infinite ease-in-out;
+        }
+
+        /* seção inicio */
         .hero-title {
             font-size: 2.5rem;
-            color: #08421D;
+            color: var(--title-color);
             margin-bottom: 20px;
             animation: fadeInDown 1.2s ease-out forwards;
         }
@@ -126,11 +247,11 @@
         .hero-subtitle {
             font-size: 1.5rem;
             max-width: 650px;
-            color: #1a1a1a;
+            color: var(--text-main);
             animation: fadeInUp 1.5s ease-out forwards;
         }
 
-        /* Botão Temático baseado na cor principal #0fd65b */
+        /* botões principais */
         .btn-futuro {
             background-color: #0fd65b; 
             color: #08421D;
@@ -153,7 +274,26 @@
             box-shadow: 0 8px 25px rgba(12, 181, 76, 0.5);
         }
 
-        /* Painel de Decisões (Segunda Página) */
+        /* guarda seu nome */
+        .input-nome {
+            width: 100%;
+            max-width: 400px;
+            padding: 12px 20px;
+            font-size: 1.2rem;
+            border: 2px solid var(--quiz-btn-border);
+            border-radius: 10px;
+            margin-bottom: 20px;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            outline: none;
+            text-align: center;
+        }
+
+        .input-nome:focus {
+            border-color: #0fd65b;
+        }
+
+        /* Painel de Decisões Segunda Página */
         .pagina-decisoes {
             display: none; 
             padding: 60px 20px;
@@ -167,15 +307,16 @@
         }
 
         .card-decisao {
-            background-color: #FFFFFF;
+            background-color: var(--box-bg);
+            color: var(--box-text);
             padding: 40px;
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 30px var(--box-shadow);
             width: 100%;
             margin-top: 30px;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
         }
 
-        /* Container criado para alinhar a logo e a pergunta lado a lado */
         .header-pergunta {
             display: flex;
             align-items: center;
@@ -184,7 +325,6 @@
             margin-bottom: 20px;
         }
 
-        /* Container para alinhar a logo e o título principal da segunda página */
         .header-decisoes {
             display: flex;
             align-items: center;
@@ -195,19 +335,19 @@
         }
 
         .logo-pergunta {
-            height: 50px; /* tamanho da logo do lado da fase do quiz */
+            height: 50px;
             width: auto;
             object-fit: contain;
         }
 
         .logo-titulo {
-            height: 280px; /* Tamanho da logo ao lado do título principal */
+            height: 200px;
             width: auto;
             object-fit: contain;
         }
 
         .card-decisao h3 {
-            color: #08421D;
+            color: var(--title-color);
             font-size: 1.6rem;
             margin-bottom: 0; 
             text-align: left;
@@ -215,23 +355,23 @@
 
         .titulo-decisoes {
             font-size: 2.8rem;
-            color: #08421D;
+            color: var(--title-color);
             margin-bottom: 0;
         }
 
         .sub-decisoes {
             font-size: 1.2rem;
             margin-bottom: 30px;
-            color: #333;
+            color: var(--text-main);
         }
 
-        /* Botões de Opção do Quiz  */
+        /* Botões de Opção do Quiz */
         .btn-opcao {
             display: block;
             width: 100%;
-            background-color: #F0FBF2; /* Verde muito claro para o fundo interno */
-            color: #1a1a1a;
-            border: 2px solid #C3EFCF;
+            background-color: var(--quiz-btn-bg);
+            color: var(--box-text);
+            border: 2px solid var(--quiz-btn-border);
             padding: 18px 25px;
             margin: 15px 0;
             font-size: 1.1rem;
@@ -243,12 +383,12 @@
         }
 
         .btn-opcao:hover {
-            background-color: #C3EFCF;
+            background-color: var(--quiz-btn-border);
             border-color: #0fd65b;
             transform: translateX(5px);
         }
 
-        /* Resposta final do quiz*/
+        /* Resposta final */
         .resultado-texto {
             font-size: 1.6rem;
             font-weight: bold;
@@ -257,7 +397,6 @@
             border-radius: 10px;
         }
         
-     /* Resultado do quiz */
         .excelente { color: #0A5C24; background-color: #C3EFCF; border: 2px solid #0fd65b; }
         .media { color: #E65100; background-color: #FFF3E0; border: 2px solid #FFB74D; }
         .ruim { color: #B71C1C; background-color: #FFEBEE; border: 2px solid #EF5350; }
@@ -276,7 +415,6 @@
             transition: background 0.2s;
         }
 
-        /*botão para voltar no inicio da explicação*/
         .btn-reiniciar:hover {
             background-color: #08421D;
         }
@@ -292,12 +430,18 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Linha divisória */
+        @keyframes balancoSeta {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(6px); }
+        }
+
+        /* divisória suave */
         hr {
             border: 0;
             height: 1px;
-            background: rgba(0, 0, 0, 0.08);
-            width: 80%;
+            background: var(--border-hr);
+            width: 85%;
             margin: 0 auto;
+            transition: background 0.3s ease;
         }
     </style>
