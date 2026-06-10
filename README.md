@@ -2,12 +2,12 @@
 
 <h1> Objetivo </h1>
 <p>
-  Apresentar as inovações na agropecuária para a diminuição de impactos no meio ambiente
+  Apresentar as inovações na agropecuária para a diminuição de impactos no meio ambiente, promovendo o plano de baixa emissão de carbono, os sistemas agroflorestais e o sistema indoor.
 </p>
 
 <h1> Justificativa </h1>
 <p>
-  Há muitas novas tecnologias para conseguirmos produzir mas sem agredir ou prejudicar o meio ambiente, porém, várias pessoas não procuram saber sobre esse tipo de assunto. Portanto, o site foi desenvolvido para a propagação dessas informações e para melhor entendimento pessoal
+  Há muitas novas tecnologias para conseguirmos produzir mas sem agredir ou prejudicar o meio ambiente, porém, várias pessoas não procuram saber sobre esse tipo de assunto. Portanto, o site foi desenvolvido para a propagação dessas informações e para melhor entendimento pessoal.
 </p>
 <h2> Refêrencias Bibliográficas </h2>
 <p>
