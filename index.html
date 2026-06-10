@@ -5,6 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Futuro Rural</title>
     <style>
+        /* Variáveis de Tema (Modo Claro por Padrão) */
+        :root {
+            --bg-body: #E8F9ED;
+            --text-main: #1a1a1a;
+            --bg-navbar: #0A7835;
+            --btn-nav-bg: #FFFFFF;
+            --btn-nav-text: #0A7835;
+            --btn-nav-hover-bg: #76E597;
+            --btn-nav-hover-text: #08421D;
+            --title-color: #08421D;
+            --box-bg: #FFFFFF;
+            --box-text: #000000;
+            --box-shadow: rgba(0, 0, 0, 0.08);
+            --border-hr: rgba(0, 0, 0, 0.08);
+            --quiz-btn-bg: #F0FBF2;
+            --quiz-btn-border: #C3EFCF;
+        }
+
+        /* Variáveis para o Modo Escuro */
+        [data-theme="dark"] {
+            --bg-body: #0B1A10;
+            --text-main: #E0E0E0;
+            --bg-navbar: #053D1A;
+            --btn-nav-bg: #132A1C;
+            --btn-nav-text: #76E597;
+            --btn-nav-hover-bg: #76E597;
+            --btn-nav-hover-text: #08421D;
+            --title-color: #52E085;
+            --box-bg: #132A1C;
+            --box-text: #E0E0E0;
+            --box-shadow: rgba(0, 0, 0, 0.4);
+            --border-hr: rgba(255, 255, 255, 0.1);
+            --quiz-btn-bg: #1A3A26;
+            --quiz-btn-border: #2C613F;
+        }
+
         /* Rolagem Suave */
         * {
             margin: 0;
@@ -18,10 +54,11 @@
         }
 
         body {
-            background-color: #E8F9ED; /* Fundo VERDE clarinho */
-            color: #1a1a1a; 
+            background-color: var(--bg-body);
+            color: var(--text-main); 
             line-height: 1.6;
             position: relative;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         /* Imagem de Fundo Fixa  */
@@ -45,20 +82,21 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background-color: #0A7835; /* Tom de VERDE escuroo */
-            padding: 15px 0;
+            background-color: var(--bg-navbar);
+            padding: 15px 20px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             z-index: 1000;
             display: flex;
             justify-content: center;
+            align-items: center;
             gap: 15px;
             flex-wrap: wrap;
         }
 
-        /* Botões Brancos */
+        /* Botões da Navbar */
         .nav-btn {
-            background-color: #FFFFFF;
-            color: #0A7835; 
+            background-color: var(--btn-nav-bg);
+            color: var(--btn-nav-text); 
             border: none;
             padding: 10px 20px;
             font-size: 14px;
@@ -70,12 +108,31 @@
             transition: all 0.3s ease;
         }
 
-        /* Efeito adaptado para Verde */
         .nav-btn:hover {
-            background-color: #76E597;
-            color: #08421D;
+            background-color: var(--btn-nav-hover-bg);
+            color: var(--btn-nav-hover-text);
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Botão de Alternar Tema */
+        .theme-toggle {
+            background-color: transparent;
+            border: 2px solid var(--btn-nav-bg);
+            color: var(--btn-nav-bg);
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 13px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            margin-left: 10px;
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--btn-nav-bg);
+            color: var(--btn-nav-text);
         }
 
         /* Seções de Conteúdo */
@@ -96,21 +153,22 @@
             margin-bottom: 25px;
             border-bottom: 3px solid #0fd65b; 
             padding-bottom: 10px;
-            color: #08421D; /* Verde muito intenso */
+            color: var(--title-color);
         }
 
         /* Contornos das caixas de texto */
         .box-explicacao {
-            background-color: #FFFFFF; 
-            color: #000000; 
+            background-color: var(--box-bg); 
+            color: var(--box-text); 
             font-size: 1.3rem;
             max-width: 750px;
             width: 100%;
             padding: 35px; 
             border-radius: 15px; 
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08); 
+            box-shadow: 0 6px 18px var(--box-shadow); 
             text-align: center;
             margin: 20px;
+            transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
         }
 
         .box-explicacao p {
@@ -124,7 +182,7 @@
         /* seção inicio */
         .hero-title {
             font-size: 2.5rem;
-            color: #08421D;
+            color: var(--title-color);
             margin-bottom: 20px;
             animation: fadeInDown 1.2s ease-out forwards;
         }
@@ -132,7 +190,7 @@
         .hero-subtitle {
             font-size: 1.5rem;
             max-width: 650px;
-            color: #1a1a1a;
+            color: var(--text-main);
             animation: fadeInUp 1.5s ease-out forwards;
         }
 
@@ -159,6 +217,25 @@
             box-shadow: 0 8px 25px rgba(12, 181, 76, 0.5);
         }
 
+        /* Input de Nome Personalizado */
+        .input-nome {
+            width: 100%;
+            max-width: 400px;
+            padding: 12px 20px;
+            font-size: 1.2rem;
+            border: 2px solid var(--quiz-btn-border);
+            border-radius: 10px;
+            margin-bottom: 20px;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            outline: none;
+            text-align: center;
+        }
+
+        .input-nome:focus {
+            border-color: #0fd65b;
+        }
+
         /* Painel de Decisões Segunda Página */
         .pagina-decisoes {
             display: none; 
@@ -173,12 +250,14 @@
         }
 
         .card-decisao {
-            background-color: #FFFFFF;
+            background-color: var(--box-bg);
+            color: var(--box-text);
             padding: 40px;
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 30px var(--box-shadow);
             width: 100%;
             margin-top: 30px;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         /*alinhar a logo e a pergunta  */
@@ -213,7 +292,7 @@
         }
 
         .card-decisao h3 {
-            color: #08421D;
+            color: var(--title-color);
             font-size: 1.6rem;
             margin-bottom: 0; 
             text-align: left;
@@ -221,23 +300,23 @@
 
         .titulo-decisoes {
             font-size: 2.8rem;
-            color: #08421D;
+            color: var(--title-color);
             margin-bottom: 0;
         }
 
         .sub-decisoes {
             font-size: 1.2rem;
             margin-bottom: 30px;
-            color: #333;
+            color: var(--text-main);
         }
 
         /* Botões de Opção do Quiz  */
         .btn-opcao {
             display: block;
             width: 100%;
-            background-color: #F0FBF2; /* Verde muito claro para o fundo interno */
-            color: #1a1a1a;
-            border: 2px solid #C3EFCF;
+            background-color: var(--quiz-btn-bg);
+            color: var(--box-text);
+            border: 2px solid var(--quiz-btn-border);
             padding: 18px 25px;
             margin: 15px 0;
             font-size: 1.1rem;
@@ -249,7 +328,7 @@
         }
 
         .btn-opcao:hover {
-            background-color: #C3EFCF;
+            background-color: var(--quiz-btn-border);
             border-color: #0fd65b;
             transform: translateX(5px);
         }
@@ -263,7 +342,7 @@
             border-radius: 10px;
         }
         
-     /* Resultado do quiz */
+        /* Resultado do quiz */
         .excelente { color: #0A5C24; background-color: #C3EFCF; border: 2px solid #0fd65b; }
         .media { color: #E65100; background-color: #FFF3E0; border: 2px solid #FFB74D; }
         .ruim { color: #B71C1C; background-color: #FFEBEE; border: 2px solid #EF5350; }
@@ -302,14 +381,14 @@
         hr {
             border: 0;
             height: 1px;
-            background: rgba(0, 0, 0, 0.08);
+            background: var(--border-hr);
             width: 80%;
             margin: 0 auto;
+            transition: background 0.3s ease;
         }
     </style>
 </head>
 <body>
-
 
     <div class="bg-imagem-fixa" id="bgImagem"></div>
 
@@ -320,6 +399,8 @@
             <a href="#agrofloresta" class="nav-btn">Agrofloresta</a>
             <a href="#agricultura-regenerativa" class="nav-btn">Agricultura Regenerativa</a>
             <a href="#sistema-indoor" class="nav-btn">Sistema Indoor</a>
+            <a href="#futuro-campo" class="nav-btn">Quiz</a>
+            <button class="theme-toggle" id="btnTema" onclick="alternarTema()">Escuro</button>
         </nav>
 
         <section id="inicio" class="section">
@@ -392,9 +473,9 @@ Nesse modelo, tudo é controlado artificialmente por tecnologia: lâmpadas espec
             
         <section id="futuro-campo" class="section">
             <h2>Qual vai ser o futuro do campo?</h2>
-            <div class="box-explicacao">
+            <div class="box-explicacao" id="box-inicio-quiz">
                 <p>Suas escolhas definem os rumos da nossa sobrevivência e a saúde do planeta. Você está pronto para assumir o gerenciamento de uma propriedade e testar seu impacto ambiental?</p>
-                <button class="btn-futuro" onclick="irParaDecisoes()">Descobrir Agora</button>
+                <button class="btn-futuro" onclick="solicitarNome()">Descobrir Agora</button>
             </div>
         </section>
     </div>
@@ -410,6 +491,22 @@ Nesse modelo, tudo é controlado artificialmente por tecnologia: lâmpadas espec
     </div>
 
     <script>
+        let nomeUsuario = "";
+
+        // Função para alternar entre Tema Claro e Escuro
+        function alternarTema() {
+            const body = document.documentElement;
+            const btnTema = document.getElementById('btnTema');
+            
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.removeAttribute('data-theme');
+                btnTema.innerText = "Escuro";
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                btnTema.innerText = "Claro";
+            }
+        }
+
         // toda vez que abrir o site ele vai voltar do inicio
         window.addEventListener('DOMContentLoaded', () => {
             window.scrollTo(0, 0);
@@ -431,6 +528,29 @@ Nesse modelo, tudo é controlado artificialmente por tecnologia: lâmpadas espec
                 bgImagem.style.opacity = 0;
             }
         });
+
+        // Tela intermediária pedindo o nome antes de mudar de página
+        function solicitarNome() {
+            const box = document.getElementById('box-inicio-quiz');
+            box.innerHTML = `
+                <p><b>Antes de começarmos, digite o seu nome para o registro da fazenda:</b></p>
+                <input type="text" id="nomeInput" class="input-nome" placeholder="Seu nome aqui..." autocomplete="off">
+                <br>
+                <button class="btn-futuro" onclick="validarEIrParaDecisoes()">Iniciar Quiz</button>
+            `;
+            document.getElementById('nomeInput').focus();
+        }
+
+        function validarEIrParaDecisoes() {
+            const input = document.getElementById('nomeInput');
+            nomeUsuario = input.value.trim();
+            
+            if (nomeUsuario === "") {
+                nomeUsuario = "Produtor Anônimo";
+            }
+            
+            irParaDecisoes();
+        }
 
         // navegação para a "Segunda Página"
         function irParaDecisoes() {
@@ -543,22 +663,22 @@ Nesse modelo, tudo é controlado artificialmente por tecnologia: lâmpadas espec
         function calcularResultadoFinal() {
             const card = document.getElementById('card-quiz');
             const mediaFinal = pontuacaoTotal / perguntas.length;
-            let vereditoHTML = `<h3>Resultado do seu Gerenciamento:</h3>`;
+            let vereditoHTML = `<h3>Resultado do Gerenciamento de <span style="text-decoration: underline;">${nomeUsuario}</span>:</h3>`;
 
             if (mediaFinal >= 2.6) {
                 vereditoHTML += `
                     <div class="resultado-texto excelente">Excelente no cuidado com o meio ambiente!</div>
-                    <p style="margin-top:15px; font-size:1.1rem;">Parabéns! Suas decisões transformaram sua fazenda em um modelo global de sustentabilidade. Você conseguiu reter carbono, otimizar recursos e produzir alimentos mantendo a harmonia com a natureza.</p>
+                    <p style="margin-top:15px; font-size:1.1rem;">Parabéns, <b>${nomeUsuario}</b>! Suas decisões transformaram sua fazenda em um modelo global de sustentabilidade. Você conseguiu reter carbono, otimizar recursos e produzir alimentos mantendo a harmonia com a natureza.</p>
                 `;
             } else if (mediaFinal >= 1.6) {
                 vereditoHTML += `
                     <div class="resultado-texto media">Média no cuidado...</div>
-                    <p style="margin-top:15px; font-size:1.1rem;">Você evitou catástrofes extremas, mas suas técnicas ainda dependem muito de métodos convencionais que desgastam o ecossistema a longo prazo. Vale a pena balancear com práticas mais regenerativas!</p>
+                    <p style="margin-top:15px; font-size:1.1rem;">Olha, <b>${nomeUsuario}</b>, você evitou catástrofes extremas, mas suas técnicas ainda dependem muito de métodos convencionais que desgastam o ecossistema a longo prazo. Vale a pena balancear com práticas mais regenerativas!</p>
                 `;
             } else {
                 vereditoHTML += `
                     <div class="resultado-texto ruim">Você acabou com o planeta...</div>
-                    <p style="margin-top:15px; font-size:1.1rem;">Infelizmente, a busca pelo lucro imediato devastou os recursos naturais locais. O solo ficou infértil, os rios secaram e a alta emissão de gases acelerou a degradação ambiental da região.</p>
+                    <p style="margin-top:15px; font-size:1.1rem;">Infelizmente, <b>${nomeUsuario}</b>, a busca pelo lucro imediato devastou os recursos naturais locais. O solo ficou infértil, os rios secaram e a alta emissão de gases acelerou a degradação ambiental da região.</p>
                 `;
             }
 
@@ -567,6 +687,13 @@ Nesse modelo, tudo é controlado artificialmente por tecnologia: lâmpadas espec
         }
 
         function reiniciarTudo() {
+            // Restaura a caixa de chamada do quiz original
+            const box = document.getElementById('box-inicio-quiz');
+            box.innerHTML = `
+                <p>Suas escolhas definem os rumos da nossa sobrevivência e a saúde do planeta. Você está pronto para assumir o gerenciamento de uma propriedade e testar seu impacto ambiental?</p>
+                <button class="btn-futuro" onclick="solicitarNome()">Descobrir Agora</button>
+            `;
+
             document.getElementById('conteudo-decisoes').style.display = 'none';
             document.getElementById('conteudo-principal').style.display = 'block';
             window.scrollTo(0, 0);
