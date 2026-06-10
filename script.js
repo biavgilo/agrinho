@@ -70,15 +70,18 @@
 
         // navegação para a segunda página (oculta barra de progresso)
         function irParaDecisoes() {
-            document.getElementById('containerProgresso').style.display = 'none';
-            document.getElementById('conteudo-principal').style.display = 'none';
-            document.getElementById('bgImagem').style.display = 'none';
-            document.getElementById('bgImagemQuiz').style.display = 'block';
-            const painel = document.getElementById('conteudo-decisoes');
-            painel.style.display = 'flex';
-            window.scrollTo(0, 0);
-            inicializarQuiz();
-        }
+    document.getElementById('containerProgresso').style.display = 'none';
+    document.getElementById('conteudo-principal').style.display = 'none';
+
+    // Troca para o fundo do quiz
+    document.getElementById('bgImagem').style.display = 'none';
+    document.getElementById('bgImagemQuiz').style.display = 'block';
+
+    document.getElementById('conteudo-decisoes').style.display = 'flex';
+
+    window.scrollTo(0, 0);
+    inicializarQuiz();
+}
 
         // perguntas para 7 fases
         const perguntas = [
@@ -203,15 +206,15 @@
             card.innerHTML = vereditoHTML;
         }
 
-        function reiniciarTudo() {
-            const box = document.getElementById('box-inicio-quiz');
-            box.innerHTML = `
-                <p>Suas escolhas definem os rumos da nossa sobrevivência e a saúde do planeta. Você está pronto para assumir o gerenciamento de uma propriedade e testar seu impacto ambiental?</p>
-                <button class="btn-futuro" onclick="solicitarNome()">Descobrir Agora</button>
-            `;
+      function reiniciarTudo() {
 
-            document.getElementById('containerProgresso').style.display = 'block';
-            document.getElementById('conteudo-decisoes').style.display = 'none';
-            document.getElementById('conteudo-principal').style.display = 'block';
-            window.scrollTo(0, 0);
-        }
+    // Volta para o fundo inicial
+    document.getElementById('bgImagemQuiz').style.display = 'none';
+    document.getElementById('bgImagem').style.display = 'block';
+
+    document.getElementById('conteudo-decisoes').style.display = 'none';
+    document.getElementById('conteudo-principal').style.display = 'block';
+    document.getElementById('containerProgresso').style.display = 'block';
+
+    window.scrollTo(0, 0);
+}
