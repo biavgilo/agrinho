@@ -159,7 +159,7 @@
                 
                 let htmlOpcoes = `
                     <div class="header-pergunta">
-                        <img src="fazendinha.png" alt="Logo Fazendinha" class="logo-pergunta">
+                        <img src="img/fazendinha.png" alt="Logo Fazendinha" class="logo-pergunta">
                         <h3>${dados.titulo}</h3>
                     </div>
                 `;
